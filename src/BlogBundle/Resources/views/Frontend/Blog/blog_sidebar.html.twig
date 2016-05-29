@@ -36,10 +36,14 @@
         
         	<td rowspan="2">{{ child.getStartsAt|  blogDate }} </td>{% endif %}
         	
-        	<a href="{{ path('ed_blog_course', { 'eventName': child.getName(), 'parent': event.getName(), 'slug': child.getId(), 'type' : type }) }}" style="min-width: 100%; min-height: 100%;">
         	
-        	<td>{{ child.getStartsAt|  date('h:i') }}</td>
-        	<td>{{ child.getName()}}</td>
+        	
+	        	<td>{{ child.getStartsAt|  date('h:i') }}</td>
+	        	<td>
+	        		<a href="{{ path('ed_blog_course', { 'eventName': child.getName(), 'parent': event.getName(), 'slug': child.getId(), 'type' : type }) }}" style="min-width: 100%; min-height: 100%;">{{ child.getName()}} </a>
+	        	</td>
+
+        	
         	
         </tr>
         

@@ -186,7 +186,7 @@ class GrandPrix extends Event
         $c = null;
         if ($course = $this->getCourse()) {
             foreach ($course->getClassements() as $c) {
-                if ($c->getPilot()->getFullName() == $fullname)
+                if ($c->getPilot()->getFullName() == $fullName)
                     return $c;
             }
         }

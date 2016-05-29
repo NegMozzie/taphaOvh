@@ -57,7 +57,14 @@
                       </td>
                       <td class="tc classAuto">
                         <b>
-                          {{ pilot.getPoint }}
+                          {% if rank.getPilot %}
+                            {{ rank.getPilot.getTeam }}
+                          {% endif %}
+                        </b>
+                      </td>
+                      <td class="tc classAuto">
+                        <b>
+                          {{ rank.getTime }}
                         </b>
                       </td>
                     </tr>

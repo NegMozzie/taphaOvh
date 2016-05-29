@@ -30,7 +30,7 @@
 					             <div class="col-md-12" style="padding-top : 5px;">
 					        {% endif %}
 					            <div class="col-md-3">
-					                <a class="black" href="{{ path('ed_blog_resultat', {'categorySlug': item.getCategory.term.slug, 'eventName': gp.getName}) }}">
+					                <a class="black" href="{{ path('ed_blog_course', { 'eventName': gp.getName(), 'parent': item.getName(), 'slug': gp.getId(), 'type' : gp.getType }) }}">
 					                    <div class="">
 					                        {% media gp.excerptPhoto, 'excerpt' with {'class': 'centered img--auto d--b', 'style':'height:140px;width:190px;'} %}
 					                        <h3>

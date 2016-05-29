@@ -25,8 +25,6 @@
 					{% else %}
 							{%set item=pagination[0]%}
 						 	{% media item.excerptPhoto, 'excerpt' with { 'class':'nwLogo', 'style':'height:140px;width:190px;'} %}
-						 	{% if pagination|length == 1%}
-						 		{% set item = pagination[0] %}	
 								<table cellspacing="0" cellpadding="1" border="0" width="100%" class="nwGrandPrix">
 									<colgroup>			
 										<col width="1%">	
@@ -71,7 +69,7 @@
 											{% endfor %} 
 										</tr>		
 										<tr class="bl br">
-											<th colspan="2">Grand Prix</th>
+											<th colspan="2">Pilotes</th>
 											<th class="tc">Tot.</th>
 								 			{% for gp in item.getChildren %}
 												<th class="tc">
@@ -90,7 +88,7 @@
 												<td class="tc classAuto"><b>{{rank.getPoints}}</b></td>
 								 				{% for gp in item.getChildren %}
 								 					<td class="tc">
-								 						{% set class = gp.getPilotClass(rank.getPilot().getFullName()) %}
+								 						{% set class = gp.getPilotClass(rank.getPilot().getFullName) %}
 								 						{% if class %}
 								 							{{ class.getPoints }}
 								 						{% endif %}
@@ -100,39 +98,93 @@
 										{% endfor %} 			
 									</tbody>	
 								</table>
-					 		{% endif %}
-					 		<h1>Classement Equipes 
-								 {% if pagination | length == 1 %}
+
+								<h1>Classement Equipes 
+								 	{% if pagination | length == 1 %}
 								 		{{ pagination[0] }}
-								 {% endif %}
-							</h1>
-							<table class="table table-bordered">
-				              <thead>
-				                <tr>
-				                  <th>Rang</th>
-				                  <th>Equipe</th>
-				                  <th>Pilote 1</th>
-				                  <th>Pilote 2</th>
-				                  <th>Points</th>
-				                </tr>
-				              </thead>
-				              <tbody>
-				                {% for rank in item.getTeamsClass %}
-				                  <tr>
-				                    {% set pilot = rank.getPilot() %}
-				                    {% if  pilot %}
-				                    	{% set team = pilot.getTeam %}
-				                      	<td>{{ loop.index }}</td>
-				                      	<td>{{ team }}</td>
-				                		{% for pilote in team.getPilots %}
-				                      		<td>{{ pilote }}</td>
-				                      	{% endfor %}
-				                      <td>{{ rank.getPoints() }}</td>
-				                    {% endif %}
-				                  </tr>
-				                {% endfor %}
-				              </tbody>
-				            </table>
+									 {% endif %}
+								</h1>
+								<table cellspacing="0" cellpadding="1" border="0" width="100%" class="nwGrandPrix">
+									<colgroup>			
+										<col width="1%">	
+									 	<col width="54%">	
+									 	<col width="5%">
+									 	<col width="2%">
+									 	<col width="2%">
+									 	<col width="2%">
+									 	<col width="2%">
+								 		<col width="2%">
+								 		<col width="2%">
+								 		<col width="2%">
+								 		<col width="2%">
+								 		<col width="2%">
+								 		<col width="2%">
+								 		<col width="2%">
+								 		<col width="2%">
+								 		<col width="2%">
+								 		<col width="2%">
+								 		<col width="2%">
+								 		<col width="2%">
+								 		<col width="2%">
+								 		<col width="2%">
+								 		<col width="2%">
+								 		<col width="2%">
+								 		<col width="2%">
+								 		<col width="2%">
+						 			</colgroup>
+									<thead>		
+										<tr>
+											<td colspan="3" class="br"></td>
+								 			{% for gp in item.getChildren %}
+												<td class="tc bt altv">
+													<a href="">
+														<div class="rotated-text">
+															<span class="rotated-text__inner">
+																{{gp.name}}
+															</span>
+														</div>
+													</a>
+												</td>
+											{% endfor %} 
+										</tr>		
+										<tr class="bl br">
+											<th colspan="2">Equipes</th>
+											<th class="tc">Tot.</th>
+								 			{% for gp in item.getChildren %}
+												<th class="tc">
+													<img alt="" class="" src="{% path gp.excerptPhoto, 'small' %}">
+												</th>
+											{% endfor %} 			
+										</tr>
+									</thead>
+									<tbody>
+								 		{% for rank in item.getTeamsClass %}
+								 			{% set pilot = rank.getPilot() %}
+						                    {% if  pilot %}
+						                    	{% set team = pilot.getTeam %}
+												<tr class="alt">
+													<td class="tr bl"><b>{{ loop.index  }}</b></td>
+													<td nowrap="">
+														<a href="">{{ team }}</a>
+													</td>
+													<td class="tc classAuto"><b>{{rank.getPoints}}</b></td>
+									 				{% for gp in item.getChildren %}
+									 					{% set c = 0 %}
+									 					{% for pilot in team %}
+									 						{% set class = gp.getPilotClass(pilot.getFullName) %}
+									 						{% if class %}
+									 							{% set c = c + class.getPoints %}
+									 						{% endif %}
+									 					{% endfor %}
+									 					<td class="tc">
+									 						{{ c }}
+									 					</td>
+									 				{% endfor %}
+												</tr>
+											{% endif %} 			
+										{% endfor %} 			
+									</tbody>	
+								</table>
 					{% endif %}
 				</div>
 			</article><!-- main-content -->

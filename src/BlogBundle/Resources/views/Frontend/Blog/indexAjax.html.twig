@@ -1,7 +1,5 @@
 {% if pagination|length %}
-	<div class="js-media-content js-noisotope">
 	    {% include 'BlogBundle:Frontend/Blog:indexAjaxElements.html.twig' %}
-	</div>
 {% else %}
    {%  if (app.request.attributes.get('_route') == 'ed_blog_frontend_index') %}
 	   There are no articles yet!
