@@ -1,23 +1,27 @@
 <div class="row" style="margin-top : 3em;">
     {% for item in pagination %}
-    {% set commentsCnt = commentsCount(item) %}
-    <div class="col-md-3 text-center" style="margin-bottom:3em;">
-                
-            <a href="{{ path('ed_frontend_blog_single_article', { 'slug': item.slug }) }}">    
-                {% media item.excerptPhoto, 'excerpt' with {'class': ' img--auto img-responsive d--b', 'style':'height:140px;width:100%;'} %}
-			</a>
-        	
-        	<a href="{{ path('ed_frontend_blog_single_article', { 'slug': item.slug }) }}">	
-                <h1 style="word-wrap: break-word; !important">     
-                	{{item.title|capitalize }}
-                </1>
-                
-                <h1 class="text-center" style="text-align:center;">
-                    Publié le {{ item.publishedAt | date("m/d/Y")}}
-                </h1>
-            </a>
-        
-
-    </div>
+        {% set commentsCnt = commentsCount(item) %}
+        {% if (loop.index0 % 4) == 0 %}
+            <div class="col-md-12" style="padding-top : 5px;">
+        {% endif %}
+            <div class="col-md-3 text-center" style="margin-bottom:3em;">
+                        
+                    <a href="{{ path('ed_frontend_blog_single_article', { 'slug': item.slug }) }}">    
+                        {% media item.excerptPhoto, 'excerpt' with {'class': ' img--auto img-responsive d--b', 'style':'height:140px;width:100%;'} %}
+        			</a>
+                	
+                	<a href="{{ path('ed_frontend_blog_single_article', { 'slug': item.slug }) }}">	
+                        <h1 style="word-wrap: break-word; !important">     
+                        	{{item.title|capitalize }}
+                        </1>
+                        
+                        <h1 class="text-center" style="text-align:center;">
+                            Publié le {{ item.publishedAt | date("m/d/Y")}}
+                        </h1>
+                    </a>
+            </div>
+        {% if loop.index % 4  == 0 or loop.revindex == 1%}
+            </div>
+        {% endif %}
     {% endfor %}
 </div>
