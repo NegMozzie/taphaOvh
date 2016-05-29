@@ -1,0 +1,53 @@
+{% extends 'BlogBundle:Frontend/Blog:index.html.twig' %}
+{% block sidebar %}
+	{{ parent()}}
+{% endblock sidebar %}
+{% block main %}
+    {% block carousel %}
+    {% endblock carousel %}
+    {% block container %}
+		<div class="col-md-12" style="padding-top : 5px;">
+			<article id="main-content" style="position: relative;">
+				<div class="nwTable">
+					<h1>Resultat  
+						 {% if pagination | length == 1 %}
+						 		{{ pagination[0] }}
+						 {% endif %}
+					</h1>
+					{% if  pagination|length < 1 %}
+						<h1>Cette Catégorie n'a pa d'evenement</h1>
+					{% elseif  pagination|length > 1 %}
+						{% for item in pagination %}
+							<a href="{{ path('ed_blog_classement', {'categorySlug': item.getCategory().term.slug, 'eventName': item.getName}) }}">
+						 		{% media item.excerptPhoto, 'excerpt' with { 'class':'nwLogo', 'style':'height:140px;width:190px;' } %}
+						 	</a>
+					 	{% endfor %}
+					{% else %}
+						{%set item=pagination[0]%}
+						{% media item.excerptPhoto, 'excerpt' with { 'class':'nwLogo', 'style':'height:140px;width:190px;'} %}
+		                {% for gp in item.getChildren %}
+		                	{% if (loop.index0 % 4) == 0 %}
+					             <div class="col-md-12" style="padding-top : 5px;">
+					        {% endif %}
+					            <div class="col-md-3">
+					                <a class="black" href="{{ path('ed_blog_course', { 'eventName': gp.getName(), 'parent': item.getName(), 'slug': gp.getId(), 'type' : gp.getType }) }}">
+					                    <div class="">
+					                        {% media gp.excerptPhoto, 'excerpt' with {'class': 'centered img--auto d--b', 'style':'height:140px;width:190px;'} %}
+					                        <h3>
+					                            {{ gp }}
+					                        </h3>
+					                    </div>
+					                </a>
+
+					            </div>
+					        {% if loop.index % 4  == 0 or loop.revindex == 1%}
+					            </div>
+					        {% endif %}
+				               
+				        {% endfor %}
+					{% endif %}
+				</div>
+			</article><!-- main-content -->
+		</div>
+    {% endblock container %}
+{% endblock main %}

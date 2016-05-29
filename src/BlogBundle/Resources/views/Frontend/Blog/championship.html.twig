@@ -1,0 +1,58 @@
+{% extends 'BlogBundle:Frontend/Layout:main.html.twig' %}
+
+{% block content %}
+  <div class=" margin--t">
+    <div class="row">
+
+      <div id="col1" class="col c1 c-first">
+        <article id="main-content">
+          <div class="nwTable nwClub">
+            <img alt="" class="nwLogo" src="/f1/images/70/logo-F1.gif">
+            <h1>Ecuries de Formule 1<span>Saison 2016</span></h1>
+            <br class="clear">
+            <ul>
+              <li> 
+                <div> 
+                  <h2>
+                    <a href="/f1/ecuries/ferrari.html">Ferrari</a>
+                  </h2> 
+
+                          <span class="a" data-link="{&quot;url&quot;:&quot;L2YxL2VjdXJpZXMvZmVycmFyaS5odG1s&quot;}">
+
+                            <img class="nwImage" src="http://cdn.sports.fr//images/sportsdatas/f1/logo/0/ferrari/ferrari_scale70.png" alt="Ferrari">
+                              
+                            </span>
+                  <ul>  
+                    <li>
+                      <a href="/f1/pilotes/kimi-raikkonen.html">Kimi Räikkönen</a>
+                    </li>
+                    <li>
+                      <a href="/f1/pilotes/sebastian-vettel.html">Sebastian Vettel</a>
+                    </li>
+                      <li class="a" data-link="{&quot;url&quot;:&quot;L2YxL2VjdXJpZXMvZmVycmFyaS5odG1s&quot;}">
+                      Fiche écurie</li>
+                  </ul>
+                
+                </div> 
+              </li>
+                  
+                                    
+            </ul>
+          </div>
+        </article><!-- main-content -->
+      </div>
+      
+      <div class="col-md-3 col-lg-3">
+        <div id="mz_sidebar" class="semi-transparent-round">
+                  <div id="mz_sidebar_title" class="semi-transparent-round">
+                      Evenements de la semaine
+                  </div> 
+                  <div class="semi-transparent-round" margin-top:"5px;">
+                    {% render(controller('BlogBundle:Frontend/Sidebar:blogList')) %}
+
+                  </div>  
+              </div>
+      </div>
+    
+  </div>
+{% endblock content %}

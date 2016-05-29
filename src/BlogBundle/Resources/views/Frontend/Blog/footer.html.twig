@@ -1,0 +1,8 @@
+<div class="col-md-6 text--mini app-grey">
+	<h1>Equipes de Formule 1 © {{ "now"|date("Y") }} </h1>
+	{% for team in teams %}
+		<div class="col-md-6 text--mini app-grey">
+			<h1 style=" text-align:center;color:black;"> {{team|capitalize }}</h1>
+		</div>
+	{% endfor %}
+</div> 

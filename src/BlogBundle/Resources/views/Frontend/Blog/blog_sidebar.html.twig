@@ -1,0 +1,58 @@
+{% if (events|length) %}
+{% for event in events %}
+	<table class="table-striped">
+		<tr>
+			<th>
+				<a href="{{ path('ed_blog_gp', { 'eventName': event.getName }) }}" style="min-width: 100%; min-height: 100%;">
+					{% media event.countryPhoto, 'excerpt' with {'class': ' mz_sidebar_event_main col-md-4 nwLogo'} %}
+
+					<h1>
+						{{ event.getName()}}
+					</h1>
+				</a>
+
+			</th>
+		
+		</tr>
+		<tr>
+			
+			<td><h3>DATE</h3></td>
+			<td><h3>HEURE</h3></td>
+			<td><h3>PRESTATIONS</h3></td>
+			
+		</tr>
+		{% set btime = 0 %}
+
+  {% for child in event.getChildren() %}
+      {% set type =  child.getType() %}
+
+      
+      {% if (child.getStartsAt|  date("d"))  != btime %}
+        {% set btime = (child.getStartsAt|  date("d")) %}
+        
+        
+        
+        <tr>
+        
+        	<td rowspan="2">{{ child.getStartsAt|  blogDate }} </td>{% endif %}
+        	
+        	<a href="{{ path('ed_blog_course', { 'eventName': child.getName(), 'parent': event.getName(), 'slug': child.getId(), 'type' : type }) }}" style="min-width: 100%; min-height: 100%;">
+        	
+        	<td>{{ child.getStartsAt|  date('h:i') }}</td>
+        	<td>{{ child.getName()}}</td>
+        	
+        </tr>
+        
+        
+        
+        
+         {% endfor %}
+{% endfor %}
+{% endif %}
+
+
+        
+        
+        
+        
+    </table>

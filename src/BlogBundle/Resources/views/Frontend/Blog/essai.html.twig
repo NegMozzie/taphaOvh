@@ -1,0 +1,91 @@
+  
+{% extends 'BlogBundle:Frontend/Blog:index.html.twig' %}
+{% block sidebar %}
+  {{ parent()}}
+{% endblock sidebar %}
+{% block main %}
+    {% block carousel %}
+    {% endblock carousel %}
+    {% block container %}
+      <div class="col-md-12">
+        <article id="main-content">
+          <div class="nwTable col-md-12">
+            <h1>
+              <p>
+                {{event}}
+              </p>
+            </h1>
+            {% media event.excerptPhoto, 'excerpt' with {'class': 'nwLogo', 'style':'height:140px;width:190px;'} %}
+          </div>
+          {% if event.article %}
+            <div class=" col-md-12" style="margin-top: 15px;">
+              {% media event.article.excerptPhoto, 'excerpt' with {'class':'col-md-12', 'style': 'width:100%; height: 400px; padding: 0 0 0 0;  margin : 0 0 0 0;'} %}" alt="">
+
+              <div class="text--30 text--bold black margin--tx4 margin--halfb lh32"><h1>{{ event.article.title|capitalize }}</h1></div>
+
+                <p class="text--mini app-grey">Publié le 
+                  <a href="{{ path('ed_frontend_blog_by_author', {'username': event.article.author.username}) }}">{{ event.article.author.blogDisplayName }}</a> le {{ event.article.publishedAt|blogDate}}
+                  {% if (event.article.categories|length) %} in 
+                    {%  for category in event.article.categories %}
+                      {{ loop.index0 ? ', ' }}<a href="{{ path('ed_frontend_blog_by_category', {'categorySlug': category.term.slug}) }}" >{{ category.term.title }}</a>
+                    {% endfor %}
+                  {% endif %}
+                  {% if ( is_granted('ACCESS_COMMENTS') and commentsCnt) %}
+                    | <a href="#comments">{{  commentsCnt }}</a> comment{{  (commentsCnt > 1) ? 's' }}
+                  {% endif  %}
+                </p>
+                {% if (event.article.tags|length) %}
+                  <p class="text--mini app-grey"><i class="fa fa-tags"></i>
+                    {% for tag in event.article.tags %}
+                      <a href="{{ path('ed_frontend_blog_by_tag', {'tagSlug': tag.term.slug}) }}">{{ tag.term.title }}
+                      </a>
+                      {% if not loop.last %}, {% endif %}
+                    {% endfor %}
+                  </p>
+                {% endif  %}
+                <p>{{ event.article.content|raw }}</p>
+            </div>
+          {% endif %}
+          <div class=" col-md-12" style="margin-top: 15px;">
+            <div class="nwTable col-md-6">
+              <h1>
+                <p>
+                  Classement Pilote 
+                </p>
+              </h1>
+            </div>
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Pilote</th>
+                  <th>Equipe</th>
+                  <th>Meilleur Temps</th>
+                  <th>N° tours</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for rank in event.getClassements() %}
+                  <tr>
+                    {% set pilot = rank.getPilot() %}
+                      {% if  pilot %}
+                      <td>{{ pilot }}</td>
+                      <td>{{ pilot.getTeam }}</td>
+                      <td>{{ rank.time |date("h:i:s")}}</td>
+                      <td>{{ rank.getTours() }}</td>
+                    {% endif %}
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </div>    
+    {% endblock container %}
+{% endblock main %}
+
+
+
+
+
+
+  

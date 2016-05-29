@@ -1,0 +1,101 @@
+{% extends 'BlogBundle:Frontend/Blog:index.html.twig' %}
+{% block sidebar %}
+	{{ parent()}}
+{% endblock sidebar %}
+{% block main %}
+    {% block carousel %}
+    {% endblock carousel %}
+    {% block container %}
+		<div class="col-md-12" style="padding-top : 5px;">
+			<div id="col1" class="col c1 c-first">
+				<article id="main-content" style="position: relative;">
+					<!--ZONES-->
+					<div class="nwTable">
+						{% if  pagination|length %}
+					 		{% set item = pagination[0] %}
+					 	{% endif %}
+					 	<img alt="" class="nwLogo" src="{% path item.excerptPhoto, 'small' %}">
+					 	<h1>Classement Pilotes 
+					 		{% for item in pagination %}
+					 			<span> {{ item }}</span>
+					 		{% endfor %}
+					 	</h1>	
+					 	<table cellspacing="0" cellpadding="1" border="0" width="100%" class="nwGrandPrix">
+					 		<colgroup>			
+					 			<col width="1%">	
+					 			<col width="54%">	
+					 			<col width="5%">
+					 			<col width="2%">
+					 			<col width="2%">
+					 			<col width="2%">
+					 			<col width="2%">
+					 			<col width="2%">
+					 			<col width="2%">
+					 			<col width="2%">
+					 			<col width="2%">
+					 			<col width="2%">
+					 			<col width="2%">
+					 			<col width="2%">
+					 			<col width="2%">
+					 			<col width="2%">
+					 			<col width="2%">
+					 			<col width="2%">
+					 			<col width="2%">
+					 			<col width="2%">
+					 			<col width="2%">
+					 			<col width="2%">
+					 			<col width="2%">
+					 			<col width="2%">
+			 				</colgroup>
+							<thead>		
+								<tr>
+									<td colspan="3" class="br"></td>
+					 				{% for gp in item.getChildren %}
+					 					{% set class[gp][pilot] = %}
+										<td class="tc bt altv">
+											<a href="">
+												<div class="rotated-text"><span class="rotated-text__inner"> {{gp.name}}</span></div>
+
+											</a>
+										</td>
+									{% endfor %} 
+								</tr>		
+								<tr class="bl br">
+									<th colspan="2">Grand Prix</th>
+									<th class="tc">Tot.</th>
+					 				{% for gp in item.getChildren %}
+										<th class="tc">
+											<img alt="" class="" src="{% path gp.excerptPhoto, 'small' %}">
+						
+										</th>
+									{% endfor %} 			
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="alt">
+									<td class="tr bl"><b>1</b></td>
+									<td nowrap="">
+										<strong><a href="/f1/pilotes/nico-rosberg.html">Nico Rosberg</a></strong>
+									</td>
+									<td class="tc classAuto"><b>25</b></td>
+									<td class="tc">25</td>
+								</tr>
+							</tbody>	
+						</table>
+					</div>
+				</article><!-- main-content -->
+			</div>
+			{{ knp_pagination_render(pagination) }}
+		</div>
+    {% endblock container %}
+{% endblock main %}
+
+{% block foot %}
+	
+	<footer class="footer">
+      <div class="container col-md-12" style="padding:0 0 0 0;">
+      	<div class="col-md-6 text--mini app-grey">Equipes de Formule 1 © {{ "now"|date("Y") }}</div>
+		<div class="col-md-6  text--mini app-grey" style="float:right">Contacts: ©</div>
+      </div>
+    </footer>
+{% endblock foot %}

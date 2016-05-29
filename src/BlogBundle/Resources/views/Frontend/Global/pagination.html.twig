@@ -1,0 +1,6 @@
+{% if next is defined %}
+    <p class="center js-load-more">
+        <a data-value="{{ next }}" class="[ btn  btn--sm  btn--hollow ] txt--mini  margin--t pdn--lx2  pdn--rx2 js-pagination-pager" href="{{ path(route, query|merge({(pageParameterName): next})) }}">
+        </a>
+    </p>
+{% endif %}

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html {% block htmlclass %}class=""{% endblock htmlclass %} lang="en">
+  <head>
+
+    <meta http-equiv="Content-Type" content="text/html;" charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--[if IE]>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <![endif]-->
+    <title>{% block title %}EdBlog Administration{% endblock %}</title>
+
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+    {% block metaTags %}
+      {# <meta name="EdBlog">#}
+      <meta name="description" content="">
+      <meta property="og:site_name" content="EdBlog">
+      <meta property="og:url" content="http://www.etondigital.com/">
+      <meta property="og:title" content="EdBlog">
+      <meta property="og:image" content="{{ asset('bundles/blog/img/svg/edblog-logo.svg') }}">
+      <meta property="og:description" content="EdBlog">
+      <meta charset="utf-8">
+      {# <meta name="robots" content="noindex,follow" />#}
+    {% endblock %}
+
+    {# We merge several css files into 1, and that way we reduce number of calls during page rendering #}
+    {# Vendor css files #}
+    {# EdBlog css files #}
+
+    {% block stylesheets %}
+      {% stylesheets filter="cssrewrite"
+          'bundles/blog/css/pnotify.custom.min.css'
+          'bundles/blog/css/jquery.Jcrop.css'
+          'bundles/blog/css/nprogress.css'
+          'bundles/blog/css/bootstrap.css'
+          'bundles/blog/css/main.min.blessed.css'
+          'bundles/blog/css/bootstrap-tagsinput.css'
+      %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+      {% endstylesheets %}
+
+      <link href="{{ asset('bundles/blog/css/pnotify.custom.min.css') }}" rel="stylesheet">
+      <link href="{{ asset('bundles/blog/css/main.css') }}" rel="stylesheet">
+      <link href="{{ asset('bundles/blog/css/jquery.Jcrop.css') }}" rel="stylesheet">
+      <link href="{{ asset('bundles/blog/css/nprogress.css') }}" rel="stylesheet">
+      <link href="{{ asset('bundles/blog/css/bootstrap.css') }}" rel="stylesheet">
+      <link href="{{ asset('bundles/blog/css/main.min.blessed.css') }}" rel="stylesheet">
+      <link href="{{ asset('bundles/blog/css/bootstrap-tagsinput.css') }}" rel="stylesheet">
+      
+    {% endblock %}
+
+    {# Fonts #}
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,300,400,600,700,800&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+  </head>
+
+
+  <body class="{% block body_class %}{% endblock body_class %}">
+
+    {% block body %}
+      {#<div class="flash">#}
+        {#{{ include('BlogBundle:Utils:flash_message.html.twig') }}#}
+      {#</div>#}
+    {% endblock %}
+
+    {% block modals %}
+      <div class="modal fade" id="js-main-modal" tabindex="-1" role="dialog" aria-hidden="true">
+      </div>
+    {% endblock modals %}
+
+    {% block javascripts %}
+
+      {% javascripts
+        '@BlogBundle/Resources/public/js/vendor/jquery.min.js'
+        '@BlogBundle/Resources/public/js/vendor/bootstrap.min.js'
+
+        '@BlogBundle/Resources/public/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js'
+        '@BlogBundle/Resources/public/js/vendor/retina-1.1.0.min.js'
+        '@BlogBundle/Resources/public/js/vendor/imagesloaded.pkgd.min.js'
+        '@BlogBundle/Resources/public/js/vendor/isotope.pkgd.min.js'
+        '@BlogBundle/Resources/public/js/vendor/bootstrap-tagsinput.min.js'
+        '@BlogBundle/Resources/public/js/vendor/jquery.autocomplete.js'
+
+        '@BlogBundle/Resources/public/js/vendor/jquery.ui.widget.js'
+        '@BlogBundle/Resources/public/js/vendor/jquery.fileupload.js'
+        '@BlogBundle/Resources/public/js/vendor/nprogress.js'
+        '@BlogBundle/Resources/public/js/vendor/jquery.Jcrop.min.js'
+        '@BlogBundle/Resources/public/js/vendor/pnotify.custom.min.js'
+
+        '@BlogBundle/Resources/public/js/general.js'
+        '@BlogBundle/Resources/public/js/frontend.js'
+        '@BlogBundle/Resources/public/js/ed_autocomplete.js'
+
+      %}
+      <script type="text/javascript" src="{{ asset_url }}"></script>
+      {% endjavascripts %}
+
+      <script src="/bundles/blog/js/vendor/jquery.min.js"></script>
+        <script src="/bundles/blog/js/vendor/bootstrap.min.js"></script>
+
+        <script src="/bundles/blog/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+        <script src="/bundles/blog/js/vendor/retina-1.1.0.min.js"></script>
+        <script src="/bundles/blog/js/vendor/imagesloaded.pkgd.min.js"></script>
+        <script src="/bundles/blog/js/vendor/isotope.pkgd.min.js"></script>
+        <script src="/bundles/blog/js/vendor/bootstrap-tagsinput.min.js"></script>
+        <script src="/bundles/blog/js/vendor/jquery.autocomplete.js"></script>
+
+        <script src="/bundles/blog/js/vendor/jquery.ui.widget.js"></script>
+        <script src="/bundles/blog/js/vendor/jquery.fileupload.js"></script>
+        <script src="/bundles/blog/js/vendor/nprogress.js"></script>
+        <script src="/bundles/blog/js/vendor/jquery.Jcrop.min.js"></script>
+        <script src="/bundles/blog/js/vendor/pnotify.custom.min.js"></script>
+
+        <script src="/bundles/blog/js/general.js"></script>
+        <script src="/bundles/blog/js/frontend.js"></script>
+        <script src="/bundles/blog/js/ed_autocomplete.js"></script>
+        <script src="/bundles/blog/js/fe-general.js"></script>
+
+      <script src="/bundles/blog/js/tinymce/tinymce.min.js"></script>
+
+      {{ include('BlogBundle:Utils:flash_message.js.twig') }}
+
+    {% endblock %}
+
+  </body>
+</html>

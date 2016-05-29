@@ -1,0 +1,20 @@
+openConnection: connect: Aucun fichier ou dossier de ce type
+cannot connect to brltty at :0
+upstart: Le processus unity-settings-daemon main s'est achevé, redémarrage
+upstart: Le processus indicator-bluetooth main (3552) a été tué par le signal TERM
+upstart: Le processus indicator-power main (3553) a été tué par le signal TERM
+upstart: Le processus indicator-session main (3557) a été tué par le signal TERM
+upstart: Le processus unity-settings-daemon main (7490) a été tué par le signal TERM
+upstart: Le processus indicator-datetime main (3554) a été tué par le signal TERM
+upstart: Le processus indicator-application main (3558) a été tué par le signal TERM
+upstart: Disconnected from notified D-Bus bus
+upstart: Le processus gnome-session (Unity) main (3408) s'est achevé avec l'état 1
+upstart: Le processus hud main (3399) a été tué par le signal TERM
+upstart: Le processus upstart-udev-bridge main (3293) a été tué par le signal KILL
+upstart: Le processus upstart-dbus-session-bridge main (3388) a été tué par le signal KILL
+upstart: Le processus upstart-dbus-system-bridge main (3390) a été tué par le signal KILL
+upstart: Le processus upstart-event-bridge main (3314) a été tué par le signal KILL
+upstart: Le processus upstart-file-bridge main (3397) a été tué par le signal KILL
+upstart: Le processus unity-panel-service main (3415) a été tué par le signal KILL
+upstart: Le processus unity7 main (3405) a été tué par le signal KILL
+upstart: Le processus indicator-keyboard main (3555) a été tué par le signal KILL

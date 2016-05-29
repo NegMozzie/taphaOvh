@@ -1,0 +1,83 @@
+{% extends 'BlogBundle:Frontend/Blog:index.html.twig' %}
+{% block sidebar %}
+	{{ parent()}}
+{% endblock sidebar %}
+{% block main %}
+    {% block carousel %}
+    {% endblock carousel %}
+    {% block container %}
+		<div class="col-md-12" style="padding-top : 5px;">
+			<div "syle="position:relative">
+				<article id="main-content" style="position: relative">
+					<div class="nwTable">
+						<h1>Calendrier
+							{% for item in pagination %}	
+								{{ item }}
+							{% endfor %}
+						</h1>
+						{% if pagination|length == 0 %}
+							<h1>	
+								Pas d'evenement à afficher
+							</h1>
+						{% elseif  pagination|length == 1 %}
+							{% set item = pagination[0] %}
+							{% media item.excerptPhoto, 'excerpt' with {'class': 'nwLogo', 'style':'height:140px;width:190px;'} %} 
+							
+							<table border="0" cellpadding="1" cellspacing="0" width="100%"> 
+								<colgroup> 
+									<col width="10%"> 
+									<col width="28%"> 
+									<col width="19%"> 
+									<col width="20%"> 
+									<col width="15%"> 
+								</colgroup> 
+								<thead> 
+									<tr> 
+										<th colspan="5" class="tl">Calendrier {{item}}</th> 
+									</tr> 
+								</thead> 
+								<tbody> 
+									<tr>
+										<th>Date</th>
+										<th>Grand prix</th>
+										<th>Pays</th>
+										<th>Ville</th>
+										<th></th>
+									</tr>
+									{% for gp in item.getChildren() %}
+										<tr class="">
+											<td>Du <span data-time="1458264600" class="utc">{{ gp.getStartsAt|date("d/m") }}
+												</span> au <span data-time="1458450000" class="utc">{{ gp.getEndsAt|date("d/m") }}</span>
+											</td>
+											<td>
+												<strong>
+													<a class="texteGras" href=""> {{ gp.getName }} </a>
+												</strong>
+											</td>
+											<td>
+												{% media gp.countryPhoto, 'excerpt' with {'class': ' mz_sidebar_event_main col-md-6 nwLogo', 'style':'height:20px;'} %}
+											</td>
+											<td>
+												<a href="">{{ gp.getTown }}</a>
+											</td>
+											<td>
+												<a href="{{ path('ed_blog_gp', { 'eventName': gp.getName }) }}">résultats</a>
+											</td>
+										</tr>
+									{% endfor %}
+								</tbody>
+							</table>
+						{% endif %}
+
+					</div>
+				</article><!-- main-content -->
+			</div>
+		</div>
+    {% endblock container %}
+{% endblock main %}
+
+{% block foot %}
+	{{ parent()}}
+{% endblock foot %}
+
+

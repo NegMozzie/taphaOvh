@@ -1,0 +1,93 @@
+{% extends 'BlogBundle:Frontend/Blog:index.html.twig' %}
+{% block sidebar %}
+	{{ parent()}}
+{% endblock sidebar %}
+{% block main %}
+    {% block carousel %}
+    {% endblock carousel %}
+    {% block container %}
+		<div class="col-md-12" style="padding-top : 5px;">
+			<article id="main-content" style="position: relative;">
+				<div class="nwTable">
+					<h1>Classement Pilotes 
+				 		{{ event }}
+					</h1>
+				 	{% media event.excerptPhoto, 'excerpt' with { 'class':'nwLogo' } %}
+					<table cellspacing="0" cellpadding="1" border="0" width="100%" class="nwGrandPrix">
+						<colgroup>			
+							<col width="1%">	
+						 	<col width="54%">	
+						 	<col width="5%">
+						 	<col width="2%">
+						 	<col width="2%">
+						 	<col width="2%">
+						 	<col width="2%">
+					 		<col width="2%">
+					 		<col width="2%">
+					 		<col width="2%">
+					 		<col width="2%">
+					 		<col width="2%">
+					 		<col width="2%">
+					 		<col width="2%">
+					 		<col width="2%">
+					 		<col width="2%">
+					 		<col width="2%">
+					 		<col width="2%">
+					 		<col width="2%">
+					 		<col width="2%">
+					 		<col width="2%">
+					 		<col width="2%">
+					 		<col width="2%">
+					 		<col width="2%">
+					 		<col width="2%">
+			 			</colgroup>
+						<thead>		
+							<tr>
+								<td colspan="3" class="br"></td>
+								{% for gp in event.getChildren %}
+									<td class="tc bt altv">
+										<a href="">
+											<div class="rotated-text">
+												<span class="rotated-text__inner">
+													{{gp.name}}
+												</span>
+											</div>
+										</a>
+										</td>
+								{% endfor %} 
+							</tr>		
+							<tr class="bl br">
+								<th colspan="2">Grand Prix</th>
+								<th class="tc">Tot.</th>
+								{% for gp in event.getChildren %}
+									<th class="tc">
+										{% media gp.excerptPhoto, 'small' %}">
+									</th>
+								{% endfor %} 			
+							</tr>
+						</thead>
+						<tbody>
+							{% for rank in event.getPilots %}
+								<tr class="alt">
+									<td class="tr bl"><b>{{rank.rank}}</b></td>
+									<td nowrap="">
+										<a href="">{{ rank.getPilot }}</a>
+									</td>
+									<td class="tc classAuto"><b>{{rank.getPoints}}</b></td>
+						 			{% for gp in item.getChildren %}
+						 				<td class="tc">
+						 					{% set class = gp.getPilotClass(rank.getPilot().getFullName()) %}
+						 					{% if class %}
+						 						{{ class.getPoints }}
+						 					{% endif %}
+						 				</td>
+						 			{% endfor %}
+								</tr>
+							{% endfor %} 			
+						</tbody>	
+					</table>
+				</div>
+			</article><!-- main-content -->
+		</div>
+    {% endblock container %}
+{% endblock main %}

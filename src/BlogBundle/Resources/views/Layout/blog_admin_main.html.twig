@@ -1,0 +1,44 @@
+{% extends 'BlogBundle:Layout:blog_admin_base.html.twig' %}
+
+{% set currentPath = app.request.attributes.get('_route') %}
+
+{% block favicon %}
+  {{ parent() }}
+{% endblock %}
+
+{% block stylesheets %}
+  {{ parent() }}
+{% endblock %}
+
+{% block body %}
+  {{ parent() }}
+  
+  {% block header %}
+    {{ parent() }}
+    
+    <header role="banner" class="header--dashboard">
+      <a class="flright text--mini" href="{{ path('homepage') }}">&lt; <span class="hidden-xs">Back to </span>Website</a>
+      <div class="logo" title=""><img class="margin--r" src="{{ asset('bundles/blog/img/svg/edblog-white-logo.svg') }}" alt="EdBlog">Admin panel</div>
+    </header>
+
+  {% endblock header %}
+
+  <div class="wrap {% block wrapclass %}{% endblock wrapclass %}">
+
+    {% include('BlogBundle:Homepage:_menu.html.twig') with {'currentPath': currentPath} %}
+
+    {% block content %}
+    {% endblock %}
+
+    {# Used for footer #}
+  </div>
+
+  {% block footer %}
+    {{ parent() }}
+  {% endblock footer %}
+
+{% endblock %} {# endblock body #}
+
+{% block javascripts %}
+  {{ parent() }}
+{% endblock %}
