@@ -24,34 +24,22 @@
 		
 		{% set btime = 0 %}
 
-  {% for child in event.getChildren() %}
-      {% set type =  child.getType() %}  
-        
-        
-        <tr>
-        
-        {% if (child.getStartsAt|  date("d"))  != btime %}
-        	{% set btime = (child.getStartsAt|  date("d")) %}
-        	<td rowspan="2" style="color:#FFF;">{{ child.getStartsAt|  blogDate }} </td>
-        {% else %}
-        	<td rowspan="2" style="color:#FFF;"> </td>
-        {% endif %}
-        	
-        	
-        	
-	        	<td style="color:#FFF;">{{ child.getStartsAt|  date('h:i') }}</td>
-	        	<td>
-	        		<a href="{{ path('ed_blog_course', { 'eventName': child.getName(), 'parent': event.getName(), 'slug': child.getId(), 'type' : type }) }}" style="min-width: 100%; color:#FFF !important;">{{ child.getName()}} </a>
-	        	</td>
-
-        	
-        	
-        </tr>
-        
-        
-        
-        
-         {% endfor %}
+  		{% for child in event.getChildren() %}
+	   		<tr>
+	      		{% set type =  child.getType() %}
+	      		{% if (child.getStartsAt|  date("d"))  != btime %}
+	        		{% set btime = (child.getStartsAt|  date("d")) %}
+			        <td rowspan="2" style="color:#FFF;">{{ child.getStartsAt|  blogDate }} </td>
+			    {% else %}
+			        <td rowspan="2" style="color:#FFF;">{{ child.getStartsAt|  blogDate }} </td>
+			    {% endif %}
+			    <td style="color:#FFF;">{{ child.getStartsAt|  date('h:i') }}</td>
+		        <td>
+		        	<a href="{{ path('ed_blog_course', { 'eventName': child.getName(), 'parent': event.getName(), 'slug': child.getId(), 'type' : type }) }}" style="min-width: 100%; color:#FFF !important;">{{ child.getName()}} </a>
+		        </td> 
+	        </tr>
+        {% endfor %}
+    </table>
 {% endfor %}
 {% endif %}
 
@@ -60,4 +48,3 @@
         
         
         
-    </table>
