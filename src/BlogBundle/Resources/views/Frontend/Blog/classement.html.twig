@@ -9,7 +9,7 @@
 		<div class="col-md-12" style="padding-top : 5px;">
 			<article id="main-content" style="position: relative;">
 				<div class="nwTable">
-					<h1>Classement Pilotes 
+					<h1 style="font-family:'Black Ops One'; float:left; margin-top:40px;">Classement Pilotes 
 						 {% if pagination | length == 1 %}
 						 		{{ pagination[0] }}
 						 {% endif %}
@@ -19,7 +19,7 @@
 					{% elseif  pagination|length > 1 %}
 						{% for item in pagination %}
 							<a href="{{ path('ed_blog_classement', {'categorySlug': item.getCategory().term.slug, 'eventName': item.getName}) }}">
-						 		{% media item.excerptPhoto, 'excerpt' with { 'class':'nwLogo', 'style':'height:140px;width:190px;' } %}
+						 		{% media item.excerptPhoto, 'excerpt' with { 'class':'', 'style':'height:140px;width:190px;' } %}
 						 	</a>
 					 	{% endfor %}
 					{% else %}
@@ -69,10 +69,10 @@
 											{% endfor %} 
 										</tr>		
 										<tr class="bl br">
-											<th colspan="2">Pilotes</th>
-											<th class="tc">Tot.</th>
+											<th colspan="2" style="background:#0b4242;">Pilotes</th>
+											<th class="tc" style="background:#0b4242;">Tot.</th>
 								 			{% for gp in item.getChildren %}
-												<th class="tc">
+												<th class="tc" style="background:#0b4242;">
 													<img alt="" class="" src="{% path gp.excerptPhoto, 'small' %}">
 												</th>
 											{% endfor %} 			
@@ -99,7 +99,7 @@
 									</tbody>	
 								</table>
 
-								<h1>Classement Equipes 
+								<h1 style="font-family:'Black Ops One'; margin-top:2em; margin-bottom:1em;">Classement Equipes 
 								 	{% if pagination | length == 1 %}
 								 		{{ pagination[0] }}
 									 {% endif %}

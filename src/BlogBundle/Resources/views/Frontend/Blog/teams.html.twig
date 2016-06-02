@@ -34,15 +34,15 @@
 
 		{% for item in pagination %}
 			{% if (loop.index0 % 4) == 0 %}
-				<div class="col-md-12" style="padding-top : 5px;">
+				<div class="row" style="padding-top : 5px;">
 			{% endif %}
-			<div class="col-md-3">
-				<div class="thumb">
-					{% media item.excerptPhoto, 'excerpt' with {'class': 'centered img--auto d--b', 'style':'height:140px;width:190px;'} %}
-				</div>
-				<h6 style=" text-align:center;color:black;"> {{item|capitalize }}</h6>
+			<div class="col-md-3" style="background:#479FA1;">
+				
+					{% media item.excerptPhoto, 'excerpt' with {'class': 'img--auto d--b', 'style':'height:140px;width:100%;'} %}
+				
+				<h6 style=" text-align:center;color:#FFF !important;"> {{item|capitalize }}</h6>
 				{% for pilot in item.getPilots %}
-					<h6 style=" text-align:center;color:black;">
+					<h6 style=" text-align:center;color:#0b4242 !important;">
 						<a class="black" href="{{ path('ed_frontend_blog_by_pilotname', { 'fullName': pilot.getFullName }) }}">
 							{{pilot|capitalize }}
 						</a>

@@ -38,15 +38,17 @@
 			{% endif %}
 				<div class="col-md-3">
 					<a class="black" href="{{ path('ed_frontend_blog_by_pilotname', { 'fullName': item.getFullName }) }}">
-						<div class="col-md-7">
-							{% media item.excerptPhoto, 'excerpt' with {'class': 'centered img--auto d--b', 'style':'height:140px;width:190px;'} %}
+						<div class="col-md-7" style="background:#479FA1;">
+							{% media item.excerptPhoto, 'excerpt' with {'class': 'img--auto d--b', 'style':'height:140px;width:100%;'} %}
 						</div>
-						<div class="col-md-4" style="margin-left:1%;; height:100%; background-color:white;">
-            				{% media item.countryPhoto, 'excerpt' with {'class': ' mz_sidebar_event_main col-md-6 nwLogo', 'style':'height:20px;'} %}
-							<h6 style=" text-align:center;color:black;"> 
+						<div class="col-md-4" style=" height:100%; background-color:#479FA1;">
+            				
+							<h6 style="text-align:center;color:#FFF !important;"> 
 								{{item|capitalize }}
-							</h6>
-							<h6 style=" text-align:center;color:black;">
+							</h6><br>
+							{% media item.countryPhoto, 'excerpt' with {'class': 'col-md-6', 'style':'height:20px;'} %}
+							<br>
+							<h6 style=" text-align:center;color:#0b4242 !important;">
 								{{item.getTeam|capitalize }}
 							</h6>
 						</div>

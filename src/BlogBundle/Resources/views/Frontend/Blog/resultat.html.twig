@@ -29,11 +29,11 @@
 		                	{% if (loop.index0 % 4) == 0 %}
 					             <div class="col-md-12" style="padding-top : 5px;">
 					        {% endif %}
-					            <div class="col-md-3">
+					            <div class="col-md-3" style="margin-bottom:1.5em;">
 					                <a class="black" href="{{ path('ed_blog_resultat', {'categorySlug': item.getCategory.term.slug, 'eventName': gp.getName}) }}">
 					                    <div class="">
-					                        {% media gp.excerptPhoto, 'excerpt' with {'class': 'centered img--auto d--b', 'style':'height:140px;width:190px;'} %}
-					                        <h3>
+					                        {% media gp.excerptPhoto, 'excerpt' with {'class': ' img--auto d--b', 'style':'height:140px;width:190px;'} %}
+					                        <h3 style="margin-top:1em;">
 					                            {{ gp }}
 					                        </h3>
 					                    </div>

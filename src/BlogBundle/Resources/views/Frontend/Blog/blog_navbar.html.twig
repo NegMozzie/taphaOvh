@@ -1,6 +1,6 @@
 {% if (categories|length) %}
     {% for children in categories %}
-        <li class="exe_nav_main_li"><a href="{{ path('ed_frontend_blog_by_category', {'categorySlug': children.term.slug}) }}">{{children.term.title}} </a>
+        <li class="exe_nav_main_li" id="drop"><a href="{{ path('ed_frontend_blog_by_category', {'categorySlug': children.term.slug}) }}">{{children.term.title}} </a>
             <div class="exe_nav_sub col-md-12">
                 <div class="col-md-2" style="margin: 0 0 0 0;">
     
