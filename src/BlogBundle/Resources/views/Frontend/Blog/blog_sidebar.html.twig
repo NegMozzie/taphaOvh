@@ -29,9 +29,9 @@
 	      		{% set type =  child.getType() %}
 	      		{% if (child.getStartsAt|  date("d"))  != btime %}
 	        		{% set btime = (child.getStartsAt|  date("d")) %}
-			        <td rowspan="2" style="color:#FFF;">{{ child.getStartsAt|  blogDate }} </td>
+			        <td  style="color:#FFF;">{{ child.getStartsAt|  blogDate }} </td>
 			    {% else %}
-			        <td rowspan="2" style="color:#FFF;">{{ child.getStartsAt|  blogDate }} </td>
+			        <td  style="color:#FFF;"> </td>
 			    {% endif %}
 			    <td style="color:#FFF;">{{ child.getStartsAt|  date('h:i') }}</td>
 		        <td>
