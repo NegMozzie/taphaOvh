@@ -25,17 +25,17 @@
 		{% set btime = 0 %}
 
   {% for child in event.getChildren() %}
-      {% set type =  child.getType() %}
-
-      
-      {% if (child.getStartsAt|  date("d"))  != btime %}
-        {% set btime = (child.getStartsAt|  date("d")) %}
-        
+      {% set type =  child.getType() %}  
         
         
         <tr>
         
-        	<td rowspan="2" style="color:#FFF;">{{ child.getStartsAt|  blogDate }} </td>{% endif %}
+        {% if (child.getStartsAt|  date("d"))  != btime %}
+        	{% set btime = (child.getStartsAt|  date("d")) %}
+        	<td rowspan="2" style="color:#FFF;">{{ child.getStartsAt|  blogDate }} </td>
+        {% else %}
+        	<td rowspan="2" style="color:#FFF;"> </td>
+        {% endif %}
         	
         	
         	
