@@ -11,9 +11,7 @@
         <article id="main-content">
           <div class="nwTable col-md-12">
             <h1>
-              <p>
-                {{event}}
-              </p>
+              
             </h1>
             {% media event.excerptPhoto, 'excerpt' with {'class': 'nwLogo', 'style':'height:140px;width:190px;'} %}
           </div>
@@ -50,7 +48,8 @@
             <div class="nwTable col-md-6">
               <h1>
                 <p>
-                  Classement Pilote 
+                  Classement Pilote {{event.getName}} {{event.getParent.getName}}
+              
                 </p>
               </h1>
             </div>
