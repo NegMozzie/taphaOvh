@@ -4,22 +4,22 @@
             <div class="exe_nav_sub col-md-12">
                 <div class="col-md-2" style="margin: 0 0 0 0;">
     
-                    <ul style="margin: 15% 15% 0 1%;">
+                    <ul style="margin: 15% 15% 15% 1%; color:#479FA1 !important;">
 
                         {% set 
                         br = 0 %}
                         {% for child in children.getChildren() %}
-                            <li><a href="{{ path('ed_frontend_blog_by_category', {'categorySlug': child.term.slug}) }}">{{child.term.title}}</a></li>
+                            <li><a style="color:#479FA1 !important;" href="{{ path('ed_frontend_blog_by_category', {'categorySlug': child.term.slug}) }}">{{child.term.title}}</a></li>
                             {% set br = br + 1 %}
                         {% endfor %}
                         {% if "formule 1" in children.term.title|lower %}
-                            <li><a href="{{ path('ed_blog_pilots', {'categorySlug': children.term.slug}) }}">Pilotes</a></li>
-                            <li><a href="{{ path('ed_blog_teams', {'categorySlug': children.term.slug}) }}">Equipes</a></li>
-                            <li><a href="{{ path('ed_blog_resultats', {'categorySlug': children.term.slug}) }}">Resultats</a></li>
+                            <li><a style="color:#479FA1 !important;" href="{{ path('ed_blog_pilots', {'categorySlug': children.term.slug}) }}">Pilotes</a></li>
+                            <li><a style="color:#479FA1 !important;" href="{{ path('ed_blog_teams', {'categorySlug': children.term.slug}) }}">Equipes</a></li>
+                            <li><a style="color:#479FA1 !important;" href="{{ path('ed_blog_resultats', {'categorySlug': children.term.slug}) }}">Resultats</a></li>
                         {% endif %}
 
-                         <li><a href="{{ path('ed_blog_classements', {'categorySlug': children.term.slug}) }}">Classement</a></li>
-                         <li><a href="{{ path('ed_blog_events', {'categorySlug': children.term.slug}) }}">Calendrier</a></li>
+                         <li><a style="color:#479FA1 !important;" href="{{ path('ed_blog_classements', {'categorySlug': children.term.slug}) }}">Classement</a></li>
+                         <li><a style="color:#479FA1 !important;" href="{{ path('ed_blog_events', {'categorySlug': children.term.slug}) }}">Calendrier</a></li>
                     </ul>
                 </div>
                 <div class="col-md-10" style="padding: 0 0 0 0;  background-color:Black;">

@@ -10,7 +10,7 @@
     	<div class="col-md-12" style="padding-top : 5px;">
 			<div class="nwTable col-md-6">					
 				<h1>
-					<p>Ecuries 
+					<p style="font-family: 'Black Ops One'; ">Ecuries 
 						{% if (criteria is defined) %}
 						    {% if (criteria.type == 'category') %}
 						        {%  set categories = categoriesFromFirstLevel(criteria.value)  %}
@@ -36,11 +36,12 @@
 			{% if (loop.index0 % 4) == 0 %}
 				<div class="row" style="padding-top : 5px;">
 			{% endif %}
-			<div class="col-md-3" style="background:#479FA1;">
+			<div class="col-md-3" style="background:#479FA1; padding: 0 0 10px 0; width:24%; margin-left:1%; margin-bottom:2em;" id="division">
 				
-					{% media item.excerptPhoto, 'excerpt' with {'class': 'img--auto d--b', 'style':'height:140px;width:100%;'} %}
-				
-				<h6 style=" text-align:center;color:#FFF !important;"> {{item|capitalize }}</h6>
+					{% media item.excerptPhoto, 'excerpt' with {'class': 'img--auto d--b', 'style':'height:155px;width:100%;'} %}
+				<div style="height:80px;">
+				<br>
+				<h3 style=" text-align:center;color:#FFF !important;"> {{item|capitalize }}</h3>
 				{% for pilot in item.getPilots %}
 					<h6 style=" text-align:center;color:#0b4242 !important;">
 						<a class="black" href="{{ path('ed_frontend_blog_by_pilotname', { 'fullName': pilot.getFullName }) }}">
@@ -48,11 +49,14 @@
 						</a>
 					</h6>
 				{% endfor %}
+				</div>
 			</div>
 			
 			{% if loop.index % 4  == 0 or loop.revindex == 1%}
 				</div>
 			{% endif %}
 		{% endfor %}
+
     {% endblock container %}
 {% endblock main %}
+

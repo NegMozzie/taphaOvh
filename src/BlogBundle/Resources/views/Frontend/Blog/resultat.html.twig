@@ -8,8 +8,8 @@
     {% block container %}
 		<div class="col-md-12" style="padding-top : 5px;">
 			<article id="main-content" style="position: relative;">
-				<div class="nwTable">
-					<h1>Resultat  
+				<div class="">
+					<h1 style="font-family:'Black Ops One'; font-size:2.7em; float:left; margin-top:40px; padding:50px auto;">Resultat
 						 {% if pagination | length == 1 %}
 						 		{{ pagination[0] }}
 						 {% endif %}
@@ -26,18 +26,18 @@
 						{%set item=pagination[0]%}
 						{% media item.excerptPhoto, 'excerpt' with { 'class':'nwLogo', 'style':'height:140px;width:190px;'} %}
 		                {% for gp in item.getChildren %}
+		                
 		                	{% if (loop.index0 % 4) == 0 %}
 					             <div class="col-md-12" style="padding-top : 5px;">
 					        {% endif %}
-					            <div class="col-md-3" style="margin-bottom:1.5em;">
-					                <a class="black" href="{{ path('ed_blog_resultat', {'categorySlug': item.getCategory.term.slug, 'eventName': gp.getName}) }}">
-					                    <div class="">
-					                        {% media gp.excerptPhoto, 'excerpt' with {'class': ' img--auto d--b', 'style':'height:140px;width:190px;'} %}
-					                        <h3 style="margin-top:1em;">
+					            <div class="col-md-3" style="margin-bottom:1.5em;  padding: 0 !important;">
+					                <a style="color:#FFF !important; background:#0b4242; width:95%;" class="black" href="{{ path('ed_blog_resultat', {'categorySlug': item.getCategory.term.slug, 'eventName': gp.getName}) }}">
+					                    	<br>
+					                    	<h2 style="margin-bottom:2em; color:#FFF !important; text-align:center;">
 					                            {{ gp }}
-					                        </h3>
-					                    </div>
-					                </a>
+					                        </h2>
+					                        {% media gp.excerptPhoto, 'excerpt' with {'class': 'img-responsive ', 'style':'height:140px; border:2px solid #0b4242;'} %}
+					                    					                </a>
 
 					            </div>
 					        {% if loop.index % 4  == 0 or loop.revindex == 1%}

@@ -1321,8 +1321,8 @@ li.exe_nav_main_li:hover a{
 }
 .navbar-brand {
     position: absolute;
-    left: 20%;
-    margin-left: -50px !important;  /* 50% of your logo width */
+    left: 5%;
+    margin-left: 10px !important;  /* 50% of your logo width */
     display: block;
 }
 
@@ -1333,3 +1333,9 @@ li.exe_nav_main_li:hover a{
 .nwTable tr:nth-child(2n + 1){
 	background: #206e6e !important;
 }
+
+.exe_nav_sub a {
+	color:#479FA1 !important;
+}
+
+
