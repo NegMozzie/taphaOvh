@@ -43,15 +43,15 @@
                 Commentaires en direct
               </p>
             </h1>
-            <div class="tab-content col-md-12">
-              <div class="tab-pane fade">
+            <table class="table table-bordered col-md-12">
+              <thead>
                 {% for comment in event.getComments %}
-                  <div class="col-md-10">
-                    {{ comment.comment }}
-                  </div>
+                  <tr>
+                      {{ comment.comment }}
+                  </tr>
                 {% endfor %}
-              </div>
-            </div>
+              </thead>
+            </table>
           </div>
           <div class="col-md-6" style="margin-top: 15px;">
             <h1>
