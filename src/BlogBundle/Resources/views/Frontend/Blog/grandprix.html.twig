@@ -24,13 +24,15 @@
               </p>
             </h1>
             <div class="tab-content col-md-12">
-              <div id="menu1" class="tab-pane fade">
-                {% for comment in course.getComments %}
-                  <div class="col-md-10">
-                    {{ comment.comment }}
-                  </div>
+              <table class="table table-bordered">
+              <thead>
+                {% for comment in event.getComments %}
+                  <tr>
+                      <th>{{ comment.comment }}</th>
+                  </tr>
                 {% endfor %}
-              </div>
+              </thead>
+            </table>
             </div>
           </div>
           <div class="col-md-6" style="margin-top: 15px;">
