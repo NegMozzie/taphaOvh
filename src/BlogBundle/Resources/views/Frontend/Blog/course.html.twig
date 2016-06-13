@@ -46,7 +46,8 @@
             <table class="table table-bordered">
               <thead>
                 {% for comment in event.getComments %}
-                  <tr>
+                  <tr style="color:grey;">
+                      <th>{{ comment.tour }}</th>
                       <th>{{ comment.comment }}</th>
                   </tr>
                 {% endfor %}
