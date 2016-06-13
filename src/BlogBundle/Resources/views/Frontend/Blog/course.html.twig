@@ -46,9 +46,9 @@
             <table class="table table-bordered" style="background-color:#479FA1 !important;">
               <tbody style="background-color:#479FA1 !important;">
                 {% for comment in event.getComments %}
-                  <tr style="background-color:#479FA1 !important;">
-                      <th>{{ comment.tour }}</th>
-                      <th>{{ comment.comment }}</th>
+                  <tr >
+                      <td style="background:#479FA1 !important;">{{ comment.tour }}</td>
+                      <td style="background:#479FA1 !important;">{{ comment.comment }}</td>
                   </tr>
                 {% endfor %}
               </tbody>
