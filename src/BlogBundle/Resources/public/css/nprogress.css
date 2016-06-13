@@ -1338,4 +1338,10 @@ li.exe_nav_main_li:hover a{
 	color:#479FA1 !important;
 }
 
+@media screen and (max-width: 750px){
+	li.exe_nav_main_li {
+		clear: both;
+		display: block !important;
+	}
+}
 

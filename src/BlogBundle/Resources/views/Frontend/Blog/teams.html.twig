@@ -34,9 +34,9 @@
 
 		{% for item in pagination %}
 			{% if (loop.index0 % 4) == 0 %}
-				<div class="row" style="padding-top : 5px;">
+				<div class="col-md-12" style="padding-top : 5px;">
 			{% endif %}
-			<div class="col-md-3" style="background:#479FA1; padding: 0 0 10px 0; width:24%; margin-left:1%; margin-bottom:2em;" id="division">
+			<div class="col-md-3" style="background:#479FA1; padding: 0 0 10px 0; width:24%; margin-bottom:2em;">
 				
 					{% media item.excerptPhoto, 'excerpt' with {'class': 'img--auto d--b', 'style':'height:155px;width:100%;'} %}
 				<div style="height:80px;">

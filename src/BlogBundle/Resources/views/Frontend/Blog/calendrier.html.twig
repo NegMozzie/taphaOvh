@@ -55,13 +55,13 @@
 												</strong>
 											</td>
 											<td>
-												{% media gp.countryPhoto, 'excerpt' with {'class': ' ', 'style':'height:30px; width:40%; margin-left:30%;'} %}
+												{% media gp.countryPhoto, 'excerpt' with {'class': ' ', 'style':'height:40px; width:40%; margin-left:30%;'} %}
 											</td>
 											<td>
 												<a href="" style="color:#FFF !important; font-size:1.1em; text-align:center;">{{ gp.getTown }}</a>
 											</td>
 											<td>
-												<a style="width:30%; margin:0 auto;" href="{{ path('ed_blog_gp', { 'eventName': gp.getName }) }}"><img src="/bundles/blog/img/oeil.png" style="height:40px;"></a>
+												<a style="width:30%; margin:0 auto;" href="{{ path('ed_blog_gp', { 'eventName': gp.getName }) }}"><img src="/bundles/blog/img/oeil.png" style="height:25px;"></a>
 											</td>
 										</tr>
 									{% endfor %}
