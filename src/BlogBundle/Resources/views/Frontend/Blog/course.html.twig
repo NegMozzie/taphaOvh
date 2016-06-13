@@ -43,11 +43,11 @@
                 Commentaires en direct
               </p>
             </h1>
-            <table class="table table-bordered col-md-12">
+            <table class="table table-bordered">
               <thead>
                 {% for comment in event.getComments %}
                   <tr>
-                      {{ comment.comment }}
+                      <th>{{ comment.comment }}</th>
                   </tr>
                 {% endfor %}
               </thead>
