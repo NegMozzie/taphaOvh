@@ -168,7 +168,7 @@ class Course extends Event
     /**
      * @param mixed $article
      */
-    public function setArticle(Article $article)
+    public function setArticle(Article $article = null)
     {
         $this->article = $article;
         return $this;
