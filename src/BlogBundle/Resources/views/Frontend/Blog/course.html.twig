@@ -36,67 +36,68 @@
                 </p>
                 <p>{{ event.article.content|raw }}</p>
             </div>
-          {% endif %}
-          <div class="col-md-6" style="margin-top: 15px;">
-            <h1>
-              <p>
-                Commentaires en direct
-              </p>
-            </h1>
-            <table class="table table-bordered" style="background-color:#479FA1 !important;">
-              <tbody style="background-color:#479FA1 !important;">
-                {% for comment in event.getComments %}
-                  <tr >
-                      <td style="background:#479FA1 !important;"><h3 style="color:#FFF !important;">{{ comment.tour }}</h3></td>
-                      <td style="background:#479FA1 !important;"><h3 style="color:#FFF !important;">{{ comment.comment }}</h3></td>
+            <div class="col-md-12" style="margin-top: 15px;">
+              <h1>
+                <p>
+                  Classement {{ event.name }}
+                </p>
+              </h1>
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>Rang</th>
+                    <th>Pilote</th>
+                    <th>Q1</th>
+                    <th>Q2</th>
+                    <th>Q3</th>
                   </tr>
-                {% endfor %}
-              </tbody>
-            </table>
-          </div>
-          <div class="col-md-6" style="margin-top: 15px;">
-            <h1>
-              <p>
-                Classement en direct
-              </p>
-            </h1>
-            <table class="table table-bordered">
-              <thead>
-                <tr>
-                  <th>Rang</th>
-                  <th>Pilote</th>
-                  <th>Q1</th>
-                  <th>Q2</th>
-                  <th>Q3</th>
-                </tr>
-              </thead>
-              <tbody>
-                  {% for rank in event.getPilots()%}
-                    <tr class="alt">
-                      <td class="tr bl"><b>{{rank.rank}}</b></td>
-                      <td nowrap="">
-                        {{ rank.getPilot}}
-                      </td>
-                      <td class="tc classAuto">
-                        <b>
-                          {{ rank.getTime|date("h:i:s") }}
-                        </b>
-                      </td>
-                      <td class="tc classAuto">
-                        <b>
-                          {{ rank.getTime1|date("h:i:s") }}
-                        </b>
-                      </td>
-                      <td class="tc classAuto">
-                        <b>
-                          {{ rank.getTime2|date("h:i:s") }}
-                        </b>
-                      </td>
+                </thead>
+                <tbody>
+                    {% for rank in event.getPilots()%}
+                      <tr class="alt">
+                        <td class="tr bl"><b>{{rank.rank}}</b></td>
+                        <td nowrap="">
+                          {{ rank.getPilot}}
+                        </td>
+                        <td class="tc classAuto">
+                          <b>
+                            {{ rank.getTime|date("h:i:s") }}
+                          </b>
+                        </td>
+                        <td class="tc classAuto">
+                          <b>
+                            {{ rank.getTime1|date("h:i:s") }}
+                          </b>
+                        </td>
+                        <td class="tc classAuto">
+                          <b>
+                            {{ rank.getTime2|date("h:i:s") }}
+                          </b>
+                        </td>
+                      </tr>
+                    {% endfor %}
+                </tbody>
+              </table>                  
+            </div>
+          {% else %}
+            <div class="col-md-12" style="margin-top: 15px;">
+              <h1>
+                <p>
+                  Commentaires en direct
+                </p>
+              </h1>
+              <table class="table table-bordered" style="background-color:#479FA1 !important;">
+                <tbody style="background-color:#479FA1 !important;">
+                  {% for comment in event.getComments %}
+                    <tr >
+                        <td style="background:#479FA1 !important;"><h3 style="color:#FFF !important;">{{ comment.tour }}</h3></td>
+                        <td style="background:#479FA1 !important;"><h3 style="color:#FFF !important;">{{ comment.comment }}</h3></td>
                     </tr>
                   {% endfor %}
-              </tbody>
-            </table>                  
-          </div>
+                </tbody>
+              </table>
+            </div>
+          {% endif %}
         </article>
       </div>
       
