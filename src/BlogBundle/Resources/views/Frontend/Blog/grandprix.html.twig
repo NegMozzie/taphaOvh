@@ -17,6 +17,7 @@
             </h1>
             {% media event.excerptPhoto, 'excerpt' with {'class': 'nwLogo', 'style':'height:140px;width:190px;'} %}
           </div>
+          {% set event = event.getCourse %}
           {% if event.article %}
             <div class=" col-md-12" style="margin-top: 15px;">
               {% media event.article.excerptPhoto, 'excerpt' with {'class':'col-md-12', 'style': 'width:100%; height: 400px; padding: 0 0 0 0;  margin : 0 0 0 0;'} %}
