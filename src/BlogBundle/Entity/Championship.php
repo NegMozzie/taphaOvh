@@ -128,7 +128,7 @@ class Championship extends Event
             {
                 return 0;
             }
-            return ($a->getStartsAt() < $b->getStartsAt()) ? -1 : 1;
+            return ($a->getStartsAt() > $b->getStartsAt()) ? -1 : 1;
         });
         return $array;
     }
