@@ -10,14 +10,6 @@
     {% block container %}
       <div class="col-md-9">
         <article id="main-content">
-          <div class="nwTable col-md-12">
-            <h1>
-              <p>
-                {{event}}
-              </p>
-            </h1>
-            {% media event.excerptPhoto, 'excerpt' with {'class': 'nwLogo', 'style':'height:140px;width:190px;'} %}
-          </div>
           {% set event = event.getCourse %}
           {% if event.article %}
             <div class=" col-md-12" style="margin-top: 15px;">
