@@ -207,12 +207,17 @@ class BlogController extends Controller
      * @Route("/blog/author/{username}", name="frontend_blog_by_authorbar")
      * @ParamConverter("user", class="BlogBundle\Entity\User", converter="abstract_converter")
      */
-    public function byAuthorbarAction($user)
+    public function byAuthorbarAction($user = null)
     {
-        $criteria['type'] = "author";
-        $criteria['value'] = $user;
+        if ($user)
+        {
+            $criteria['type'] = "author";
+            $criteria['value'] = $user;
 
-        $paginator = $this->get('app_repository_article')->getActiveArticlesByAuthor($user);
+            $paginator = $this->get('app_repository_article')->getActiveArticlesByAuthor($user);
+        }
+        else
+            $paginator = $this->get('app_repository_article')->getActiveArticles();
         return $this->render("BlogBundle:Frontend/Blog:Articlebar.html.twig", array(
                 'pagination' => $paginator,
                 ));
