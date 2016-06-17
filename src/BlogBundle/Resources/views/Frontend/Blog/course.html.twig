@@ -6,6 +6,8 @@
 {% block main %}
     {% block carousel %}
     {% endblock carousel %}
+            {% set author = null %}
+
     {% block container %}
       <div class="col-md-9">
         <article id="main-content">
@@ -16,7 +18,6 @@
               </p>
             </h1>
             {% media event.excerptPhoto, 'excerpt' with {'class': 'nwLogo', 'style':'height:140px;width:190px;'} %}
-            {% set author = null %}
           </div>
           {% if event.article %}
             <div class=" col-md-12" style="margin-top: 15px;">
