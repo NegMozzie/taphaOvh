@@ -79,6 +79,7 @@
                 </tbody>
               </table>                  
             </div>
+            {% set author = event.article.author %}
           {% else %}
             <div class="col-md-12" style="margin-top: 15px;">
               <h1>
@@ -97,6 +98,7 @@
                 </tbody>
               </table>
             </div>
+            {% set author = null %}
           {% endif %}
         </article>
       </div>
@@ -108,7 +110,7 @@
           <h1 style=" text-align:center;color:black;"> ARTICLES DU MEME AUTEUR </h1>
         </div> 
         <div class="col-md-12 semi-transparent-round" style="padding: 0 0 0 0; margin: 0 0 0 0; height: auto; width:100%;">  
-          {{ render(controller('BlogBundle:Frontend/Blog:byAuthorBar', {'user': null})) }}
+          {{ render(controller('BlogBundle:Frontend/Blog:byAuthorBar', {'user': author})) }}
         </div>  
     </div>
 {% endblock main %}
