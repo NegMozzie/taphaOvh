@@ -16,6 +16,7 @@
               </p>
             </h1>
             {% media event.excerptPhoto, 'excerpt' with {'class': 'nwLogo', 'style':'height:140px;width:190px;'} %}
+            {% set author = null %}
           </div>
           {% if event.article %}
             <div class=" col-md-12" style="margin-top: 15px;">
@@ -98,7 +99,6 @@
                 </tbody>
               </table>
             </div>
-            {% set author = null %}
           {% endif %}
         </article>
       </div>
