@@ -202,11 +202,7 @@ class BlogController extends Controller
         return $response;
     }
 
-    /**
-     * @Route("/blog/author/{username}", name="ed_frontend_blog_by_authorbar")
-     * @Route("/blog/author/{username}", name="frontend_blog_by_authorbar")
-     * @ParamConverter("user", class="BlogBundle\Entity\User", converter="abstract_converter")
-     */
+    
     public function byAuthorbarAction($user = null)
     {
         if ($user)
