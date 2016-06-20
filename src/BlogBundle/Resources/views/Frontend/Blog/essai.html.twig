@@ -54,7 +54,7 @@
                 <tr>
                   <th style="background: #0b4242; color:#FFF; text-align:center;">Pilote</th>
                   <th style="background: #0b4242; color:#FFF; text-align:center;">Equipe</th>
-                  <th style="background: #0b4242; color:#FFF; text-align:center;">Meilleur Temps</th>
+                  <th style="background: #0b4242; color:#FFF; text-align:center;">Temps</th>
                   <th style="background: #0b4242; color:#FFF; text-align:center;">N° tours</th>
                 </tr>
               </thead>
@@ -65,7 +65,7 @@
                       {% if  pilot %}
                       <td style="color:#FFF; text-align:center;">{{ pilot }}</td>
                       <td style="color:#FFF; text-align:center;">{{ pilot.getTeam }}</td>
-                      <td style="color:#FFF; text-align:center;">{{ rank.time |date("h:i:s")}}</td>
+                      <td style="color:#FFF; text-align:center;">{{ rank.time |date("h:i,s")}}</td>
                       <td style="color:#FFF; text-align:center;">{{ rank.getTours() }}</td>
                     {% endif %}
                   </tr>
