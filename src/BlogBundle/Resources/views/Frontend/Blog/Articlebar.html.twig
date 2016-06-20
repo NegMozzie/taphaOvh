@@ -1,6 +1,6 @@
 {% set break = false%}
 {% for item in pagination if not break %}
-    <div style="width:100%; height: 180px; border:solid; margin: padding: 0 0 0 0;">
+    <div style="width:100%; height: 180px; border:solid #0b4242; margin: padding: 0 0 0 0;">
         <a class="black" href="{{ path('ed_frontend_blog_single_article', { 'slug': item.slug }) }}">
             <div class="col-md-12" style="width:100%; height: 20px; padding: 0 0 0 0;  margin : 5px 0 0 0;">
                 <h1 style=" text-align:center;color:black;">{{ item.title|capitalize }}</h1>

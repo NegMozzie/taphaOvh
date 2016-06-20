@@ -13,9 +13,9 @@
           </div>
           {% if event.article %}
             <div class=" col-md-12" style="margin-top: 15px;">
-              {% media event.article.excerptPhoto, 'excerpt' with {'class':'col-md-12', 'style': 'width:100%; height: 400px; padding: 0 0 0 0;  margin : 0 0 0 0;'} %}
+              {% media event.article.excerptPhoto, 'excerpt' with {'class':'col-md-12', 'style': 'width:100%; height: 400px; padding: 0 0 0 0;  margin : 0 0 15px 0;'} %}
 
-              <div class="text--30 text--bold black margin--tx4 margin--halfb lh32"><h1>{{ event.article.title|capitalize }}</h1></div>
+              <h1 style="font-family:'Black Ops One'; font-size:2em;">{{ event.article.title|capitalize }}</h1>
 
                 <p class="text--mini app-grey">Publié le 
                   <a href="{{ path('ed_frontend_blog_by_author', {'username': event.article.author.username}) }}">{{ event.article.author.blogDisplayName }}</a> le {{ event.article.publishedAt|blogDate}}
@@ -41,21 +41,21 @@
             </div>
           {% endif %}
           <div class=" col-md-12" style="margin-top: 15px;">
-            <div class="nwTable col-md-6">
-              <h1>
+            <div class="nwTable ">
+              <h1 style="font-family:'Black Ops One';">
                 <p>
                   Classement Pilote {{event.getName}} {{event.getParent.getName}}
               
                 </p>
               </h1>
             </div>
-            <table class="table table-bordered">
+            <table class="table-striped table-bordered">
               <thead>
                 <tr>
-                  <th>Pilote</th>
-                  <th>Equipe</th>
-                  <th>Meilleur Temps</th>
-                  <th>N° tours</th>
+                  <th style="background: #0b4242; color:#FFF; text-align:center;">Pilote</th>
+                  <th style="background: #0b4242; color:#FFF; text-align:center;">Equipe</th>
+                  <th style="background: #0b4242; color:#FFF; text-align:center;">Meilleur Temps</th>
+                  <th style="background: #0b4242; color:#FFF; text-align:center;">N° tours</th>
                 </tr>
               </thead>
               <tbody>
@@ -63,10 +63,10 @@
                   <tr>
                     {% set pilot = rank.getPilot() %}
                       {% if  pilot %}
-                      <td>{{ pilot }}</td>
-                      <td>{{ pilot.getTeam }}</td>
-                      <td>{{ rank.time |date("h:i:s")}}</td>
-                      <td>{{ rank.getTours() }}</td>
+                      <td style="color:#FFF; text-align:center;">{{ pilot }}</td>
+                      <td style="color:#FFF; text-align:center;">{{ pilot.getTeam }}</td>
+                      <td style="color:#FFF; text-align:center;">{{ rank.time |date("h:i:s")}}</td>
+                      <td style="color:#FFF; text-align:center;">{{ rank.getTours() }}</td>
                     {% endif %}
                   </tr>
                 {% endfor %}
