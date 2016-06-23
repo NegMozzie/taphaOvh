@@ -36,7 +36,7 @@
                   Classement {{ event.name }}
                 </p>
               </h1>
-              <table class="table table-bordered">
+              <table class="table-striped table-bordered">
                 <thead>
                   <tr>
                     <th>Rang</th>
@@ -72,17 +72,16 @@
             {% set author = event.article.author %}
           {% else %}
             <div class="col-md-12" style="margin-top: 15px;">
-              <h1>
-                <p>
+              <h1 style="font-family: 'Black Ops One'; font-size: 2em; margin-bottom: 1.5em;">
+                
                   Commentaires en direct
-                </p>
               </h1>
-              <table class="table table-bordered" style="background-color:#479FA1 !important;">
-                <tbody style="background-color:#479FA1 !important;">
+              <table class="table-striped table-bordered">
+                <tbody >
                   {% for comment in event.getComments %}
                     <tr >
-                        <td style="background:#479FA1 !important;"><h3 style="color:#FFF !important;">tour {{ comment.tour }}</h3></td>
-                        <td style="background:#479FA1 !important;"><h3 style="color:#FFF !important;">{{ comment.comment }}</h3></td>
+                        <td><h3 style="color:#FFF !important; text-align: center;">tour {{ comment.tour }}</h3></td>
+                        <td><h3 style="color:#FFF !important; text-align: center;">{{ comment.comment }}</h3></td>
                     </tr>
                   {% endfor %}
                 </tbody>
