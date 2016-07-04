@@ -1,0 +1,22 @@
+{% for item in pagination %}
+    {% set commentsCnt = commentsCount(item) %}
+     {% if (loop.index0 % 3) == 0 %}
+        <div class="col-xs-12" style="padding-top : 5px;">
+    {% endif %}
+    <div class="item panel-warning col-xs-6 col-sm-6 col-md-4">
+        <!-- Add the bg color to the header using any of the bg-* classes -->
+        <div class="widget-user-header bg-aqua-active" style="padding: 0 0 0 0 !important;">
+            <div class="c-article__full">{% media item.excerptPhoto, 'excerpt' with {'class': 'msports_item_index'} %}</div>
+        </div>
+            
+        <div class="widget-user-header col-xs-12">
+            <a class="black" style="font-family:'Black Ops One'; height: 3em; overflow: hidden;" href="{{ path('ed_frontend_blog_single_article', { 'slug': item.slug }) }}">{{ item.title[:42] }}</a>
+            <p class="text--mini app-grey" style="font-family:'Black Ops One';">Publié le {{ item.publishedAt| date("m/d/Y")}}
+                
+            </p>
+        </div>
+    </div>
+    {% if loop.index % 3  == 0 or loop.revindex == 1 %}
+        </div>
+    {% endif %}
+{% endfor %}

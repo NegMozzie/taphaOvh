@@ -1,0 +1,63 @@
+services:
+    app.admin.user:
+        class: Msports\BlogBundle\Admin\UserAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Utilisateurs", label: "Utilisateurs" }
+        arguments:
+            - ~
+            - Msports\BlogBundle\Entity\User
+            - 
+        calls:
+            - [ setTranslationDomain, [MsportsBlogBundle]]
+    app.admin.category:
+        class: Msports\BlogBundle\Admin\CategoryAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "GESTION DU SITE", label: "Categorie" }
+        arguments:
+            - ~
+            - Msports\BlogBundle\Entity\Category
+            - ~
+        calls:
+            - [ setTranslationDomain, [MsportsBlogBundle]]
+
+    app.admin.article:
+        class: Msports\BlogBundle\Admin\ArticleAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "GESTION DU SITE", label: "Article" }
+        arguments:
+            - ~
+            - Msports\BlogBundle\Entity\Article
+            - ~
+        calls:
+            - [ setTranslationDomain, [MsportsBlogBundle]]
+    app.admin.comment:
+        class: Msports\BlogBundle\Admin\CommentAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "GESTION DU SITE", label: "Comment" }
+        arguments:
+            - ~
+            - Msports\BlogBundle\Entity\Comment
+            - ~
+        calls:
+            - [ setTranslationDomain, [MsportsBlogBundle]]
+    app.admin.term:
+        class: Msports\BlogBundle\Admin\TermAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "GESTION DU SITE", label: "Term" }
+        arguments:
+            - ~
+            - Msports\BlogBundle\Entity\Term
+            - 'SonataAdminBundle:CRUD'
+        calls:
+            - [ setTranslationDomain, [MsportsBlogBundle]]
+    app.admin.articlemeta:
+        class: Msports\BlogBundle\Admin\ArticleMetaAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "GESTION DU SITE", label: "Comment Meta" }
+        arguments:
+            - ~
+            - Msports\BlogBundle\Entity\ArticleMeta
+            - ~
+        calls:
+            - [ setTranslationDomain, [MsportsBlogBundle]]
+

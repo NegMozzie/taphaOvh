@@ -1,9 +1,0 @@
-{% if pagination|length %}
-	    {% include 'BlogBundle:Frontend/Blog:indexAjaxElements.html.twig' %}
-{% else %}
-   {%  if (app.request.attributes.get('_route') == 'ed_blog_frontend_index') %}
-	   There are no articles yet!
-   {% else %}
-	   There are no articles within this criteria.
-   {% endif %}
-{% endif %}

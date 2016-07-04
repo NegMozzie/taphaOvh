@@ -1,0 +1,27 @@
+
+{% extends 'Msports\BlogBundle:Frontend/Blog:index.html.twig' %}
+
+
+{% block main %}
+   
+        <div class="col-xs-12" style=" padding: 0 0 0 0;  margin : 0 0 0 0;">
+          <div class="col-xs-8" style=" padding: 0 0 0 0;  margin : 0 0 0 0;">
+            {% media pilot.excerptPhoto, 'excerpt'  with {'class': 'centered img--auto d--b'} %}
+          </div>
+          <div class="col-xs-4" style="height:40%; padding: 0 0 0 0;  margin : 0 0 0 0;">
+            {% media pilot.countryPhoto, 'excerpt' with {'class': 'centered img--auto d--b col-xs-12'} %}
+          </div>
+        </div>
+          <div class="col-xs-12">
+              <p>
+                <h1 style="font-family:'Black Ops One'; font-size:2em; color:#000">
+                  {{pilot|capitalize }}
+                </h1>
+                <h1 style="font-family:'Black Ops One'; font-size:2em; color:#000">
+                  {{pilot.getTeam|capitalize }}
+                </h1>
+              </p>
+            </div>
+
+{% endblock main %}
+

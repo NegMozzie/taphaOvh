@@ -5,13 +5,6 @@ use Symfony\Component\Config\Loader\LoaderInterface;
 
 class AppKernel extends Kernel
 {
-
-    public function __construct($environment, $debug)
-    {
-        date_default_timezone_set( 'Europe/Paris' );
-        parent::__construct($environment, $debug);
-    }
-    
     public function registerBundles()
     {
         $bundles = array(
@@ -24,9 +17,9 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new AppBundle\AppBundle(),
-            new BlogBundle\BlogBundle(),
 
             new FOS\UserBundle\FOSUserBundle(), 
+            new ED\BlogBundle\EDBlogBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new Sonata\CoreBundle\SonataCoreBundle(),
             new Sonata\MediaBundle\SonataMediaBundle(),
@@ -36,20 +29,17 @@ class AppKernel extends Kernel
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new Eko\FeedBundle\EkoFeedBundle(),
             new Application\Sonata\MediaBundle\ApplicationSonataMediaBundle(),
-
-            // The admin requires some twig functions defined in the security
-            // bundle, like is_granted. Register this bundle if it wasn't the case
-            // already.
-
-            // These are the other bundles the SonataAdminBundle relies on
+            
             new Sonata\BlockBundle\SonataBlockBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
 
             // And finally, the storage and SonataAdminBundle
             new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
             new Sonata\AdminBundle\SonataAdminBundle(),
-            new Sonata\IntlBundle\SonataIntlBundle(),
-            
+
+            new Msports\BlogBundle\MsportsBlogBundle(),
+            new Msports\EventBundle\MsportsEventBundle(),
+            new Msports\UserBundle\MsportsUserBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

@@ -1,0 +1,14 @@
+admin_login:
+    path:  "%admin_path%/login"
+    defaults: { _controller: FOSUserBundle:Security:login }
+    options: { i18n: false }
+
+admin_check:
+    path:  "%admin_path%/login_check"
+    defaults: { _controller: FOSUserBundle:Security:check }
+    options: { i18n: false }
+
+admin_logout:
+    path:  "%admin_path%/logout"
+    defaults: { _controller: FOSUserBundle:Security:logout }
+    options: { i18n: false }

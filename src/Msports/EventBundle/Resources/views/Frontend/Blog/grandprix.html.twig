@@ -1,0 +1,96 @@
+  
+{% extends 'Msports\BlogBundle:Frontend/Blog:index.html.twig' %}
+
+{% block main %}
+    
+    {% set author = null %}
+    <div class="box box-solid col-xs-12 col-md-9" style="padding: 0 0 0 0 !important;">
+        <div class="box-body">
+          <div class="item">
+     
+            {% set event = event.getCourse %}
+            {% if event and  event.getArticle  is not null %}
+              {% media event.article.excerptPhoto, 'excerpt' with {'class':'img-responsive img-blog msports_article_photo'} %}
+              <h1 style="font-family:'Black Ops One'; font-size:2em; color:#000">{{ event.article.title|capitalize }}</h1>
+              <p class="text--mini app-grey">Publié le 
+              <a href="{{ path('ed_frontend_blog_by_author', {'username': event.article.author.username}) }}">{{ event.article.author.blogDisplayName }}</a> le {{ event.article.publishedAt|blogDate}}
+                    {% if (event.article.categories|length) %} in 
+                      {%  for category in event.article.categories %}
+                        {{ loop.index0 ? ', ' }}<a href="{{ path('ed_frontend_blog_by_category', {'categorySlug': category.term.slug}) }}" >{{ category.term.title }}</a>
+                      {% endfor %}
+                    {% endif %}
+                    {% if ( is_granted('ACCESS_COMMENTS') and commentsCnt) %}
+                      | <a href="#comments">{{  commentsCnt }}</a> comment{{  (commentsCnt > 1) ? 's' }}
+                    {% endif  %}
+                  </p>
+                  <p>{{ event.article.content|raw }}</p>
+                  <div class="col-xs-12" style="margin-top: 15px;">
+                    <h1 style="font-family:'Black Ops One'; font-size:2em; color:#0a4541 !important;">
+                      Classement {{ event.name }}
+                    </h1>
+                  </div>
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th style="background: #0b4242; color:#FFF; text-align:center;">Rang</th>
+                        <th style="background: #0b4242; color:#FFF; text-align:center;">Pilote</th>
+                        <th style="background: #0b4242; color:#FFF; text-align:center;">Equipe</th>
+                        <th style="background: #0b4242; color:#FFF; text-align:center;">Temps</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for rank in course.getPilots()%}
+                        <tr>
+                          <td><b>{{rank.rank}}</b></td>
+                          <td>
+                            {{ rank.getPilot}}
+                          </td>
+                          <td>
+                            <b>
+                              {% if rank.getPilot %}
+                                {{ rank.getPilot.getTeam }}
+                              {% endif %}
+                            </b>
+                          </td>
+                          <td class="tc classAuto">
+                            <b>
+                              {{ rank.getTime | date("h:i,s") }}
+                            </b>
+                          </td>
+                        </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+              
+                {% set author = event.article.author %}
+              {% elseif event %}
+                <div class="col-xs-12 ">
+                  <h1 style="font-family:'Black Ops One'; font-size:2em; color:#0a4541 !important;">
+                      Commentaires en direct
+                  </h1>
+                </div>
+                <table class="table table-bordered">
+                  <tbody >
+                    {% for comment in event.getComments %}
+                      <tr >
+                          <td><h3 style="color:#FFF !important; text-align: center;">tour {{ comment.tour }}</h3></td>
+                          <td><h3 style="color:#FFF !important; text-align: center;">{{ comment.comment }}</h3></td>
+                      </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              {% endif %}
+            </div>
+        </div>
+    </div> 
+
+    <div class="col-xs-12 col-md-3 col-lg-3">
+      <div class="col-xs-12">
+        <h1 style="font-family:'Black Ops One'; font-size:1.1em; color:#000"> ARTICLES DU MEME AUTEUR </h1>
+      </div> 
+      <div class="col-xs-12 semi-transparent-round">  
+          {{ render(controller('EDBlogBundle:Frontend/Blog:byAuthorBar', {'user': author})) }}
+      </div>  
+    </div>
+
+{% endblock main %}

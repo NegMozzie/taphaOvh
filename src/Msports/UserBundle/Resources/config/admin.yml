@@ -1,0 +1,9 @@
+services:
+    Msports.user.admin:
+        class: Msports\UserBundle\Entity\User
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Utilisateurs, label: Utilisateurs }
+        arguments:
+            - ~
+            - Msports\UserBundle\Entity\User
+            - ~

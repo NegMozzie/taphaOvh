@@ -1,0 +1,20 @@
+{
+  "name": "msports",
+  "description": "",
+  "main": "",
+  "license": "MSPORTS",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "web/assets/vendor/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "font-awesome": "^4.6.2",
+    "AdminLTE": "admin-lte#^2.3.3"
+  }
+}

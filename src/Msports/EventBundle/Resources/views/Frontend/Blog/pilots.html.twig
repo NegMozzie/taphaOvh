@@ -1,0 +1,47 @@
+{% extends 'Msports\BlogBundle:Frontend/Blog:index.html.twig' %}
+
+{% block main %}
+		<div class="col-xs-12">					
+			<h1 style="font-family:'Black Ops One'; font-size:2.7em; color:#0a4541 !important;">Pilotes 
+				{% if (criteria is defined) %}
+				    {% if (criteria.type == 'category') %}
+				        {%  set categories = categoriesFromFirstLevel(criteria.value)  %}
+					        {{ criteria.value.Term.title}}
+					    {% elseif (criteria.type == 'tag') %}
+					        {{ criteria.type }}: {{ criteria.value.Term.title}}
+					    {% elseif (criteria.type == 'author') %}
+					        {{ criteria.type }}: {{ criteria.value.blogDisplayName}}
+					    {% elseif (criteria.type == 'archive') %}
+					        {{ criteria.type }}: {{ criteria.value.year }} {{ getMonth(criteria.value.month)}}
+					  	{% endif  %}
+					{% endif %}
+			</h1>
+		</div>
+		<div class="col-xs-6 col-xs-push-6">
+			{% media criteria.value.excerptPhoto, 'excerpt' with {'class': 'img-responsive img-blog '} %}
+		</div>
+
+	{% for item in pagination %}
+		{% if (loop.index0 % 4) == 0 %}
+			<div class="col-xs-12">
+		{% endif %}
+		<div class="item panel-warning col-xs-6 col-sm-6 col-md-3">
+			<a class="black" href="{{ path('ed_frontend_blog_by_pilotname', { 'fullName': item.getFullName }) }}">
+				<div class="widget-user-header bg-aqua-active" style="padding: 0 0 0 0 !important;">
+					{% media item.excerptPhoto, 'excerpt' with {'class': 'img-responsive img-blog msports_article_photo'} %}
+				</div>
+				<div class="widget-user-header col-xs-12">	
+					<h6 style="font-family:'Black Ops One'; text-align:center;color:#000 !important;"> 
+						{{item|capitalize }}
+					</h6>		
+					<h6 style="font-family:'Black Ops One'; text-align:center;color:#0b4242 !important;">
+						{{item.getTeam|capitalize }}
+					</h6>
+				</div>
+			</a>
+		</div>
+		{% if loop.index % 4  == 0 or loop.revindex == 1%}
+			</div>
+		{% endif %}
+	{% endfor %}
+{% endblock main %}

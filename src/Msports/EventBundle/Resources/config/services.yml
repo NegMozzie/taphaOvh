@@ -1,0 +1,88 @@
+services:
+    app.admin.chrono:
+        class: Msports\EventBundle\Admin\ChronoAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "GESTION DES COMPETITIONS", label: "Chronomètre" }
+        arguments:
+            - ~
+            - Msports\EventBundle\Entity\Chrono
+            - ~
+        calls:
+            - [ setTranslationDomain, [AppBundle]]
+    app.admin.classement:
+        class: Msports\EventBundle\Admin\ClassementAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "GESTION DES COMPETITIONS", label: "Classement" }
+        arguments:
+            - ~
+            - Msports\EventBundle\Entity\Classement
+            - ~
+        calls:
+            - [ setTranslationDomain, [AppBundle]]
+
+    app.admin.season:
+        class: Msports\EventBundle\Admin\SeasonAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "GESTION DES COMPETITIONS", label: "Saisons" }
+        arguments:
+            - ~
+            - Msports\EventBundle\Entity\Season
+            - ~
+        calls:
+            - [ setTranslationDomain, [MsportsEventBundle]]
+
+    app.admin.championship:
+        class: Msports\EventBundle\Admin\ChampionshipAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "GESTION DES COMPETITIONS", label: "Championnat" }
+        arguments:
+            - ~
+            - Msports\EventBundle\Entity\Championship
+            - ~
+        calls:
+            - [ setTranslationDomain, [Msports\EventBundle]]
+
+    app.admin.grandprix:
+        class: Msports\EventBundle\Admin\GrandPrixAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "GESTION DES COMPETITIONS", label: "Grand Prix" }
+        arguments:
+            - ~
+            - Msports\EventBundle\Entity\GrandPrix
+            - ~
+        calls:
+            - [ setTranslationDomain, [Msports\EventBundle]]
+
+    app.admin.course:
+        class: Msports\EventBundle\Admin\CourseAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "GESTION DES COMPETITIONS", label: "Courses, Essais Libres" }
+        arguments:
+            - ~
+            - Msports\EventBundle\Entity\Course
+            - ~
+        calls:
+            - [ setTranslationDomain, [Msports\EventBundle]]
+
+    app.admin.team:
+        class: Msports\EventBundle\Admin\TeamAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "GESTION DES COMPETITIONS", label: "Equipes" }
+        arguments:
+            - ~
+            - Msports\EventBundle\Entity\Team
+            - ~
+        calls:
+            - [ setTranslationDomain, [Msports\EventBundle]]
+
+    app.admin.pilot:
+        class: Msports\EventBundle\Admin\PilotAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "GESTION DES COMPETITIONS", label: "Pilotes" }
+        arguments:
+            - ~
+            - Msports\EventBundle\Entity\Pilot
+            - 
+        calls:
+            - [ setTranslationDomain, [Msports\EventBundle]]
+

@@ -1,0 +1,29 @@
+{% if (categories|length) %}
+    <li ><a href="{{ path('ed_blog_homepage')}}">ACCUEIL</a></li>
+    {% for children in categories %}
+        <li class="dropdown mega-dropdown"><a href="{{ path('ed_frontend_blog_by_category', {'categorySlug': children.term.slug}) }}">{{children.term.title}} </a>
+            <ul class="dropdown-menu mega-dropdown-menu container">
+                <div class="row" style="">
+                <div class="col-xs-3" style="margin-top: 10px;">
+                    {% set br = 0 %}
+                    {% for child in children.getChildren() %}
+                        <li ><a style="color:#479FA1 !important;" href="{{ path('ed_frontend_blog_by_category', {'categorySlug': child.term.slug}) }}">{{child.term.title}}</a></li>
+                        {% set br = br + 1 %}
+                    {% endfor %}
+                    {% if "formule 1" in children.term.title|lower %}
+                        <li><a style="color:#479FA1 !important;" href="{{ path('ed_blog_pilots', {'categorySlug': children.term.slug}) }}">Pilotes</a></li>
+                        <li><a style="color:#479FA1 !important;" href="{{ path('ed_blog_teams', {'categorySlug': children.term.slug}) }}">Equipes</a></li>
+                        <li ><a style="color:#479FA1 !important;" href="{{ path('ed_blog_resultats', {'categorySlug': children.term.slug}) }}">Resultats</a></li>
+                    {% endif %}
+                    <li class="exe_nav_main_li"><a style="color:#479FA1 !important;" href="{{ path('ed_blog_classements', {'categorySlug': children.term.slug}) }}">Classement</a></li>
+                    <li class="exe_nav_main_li"><a style="color:#479FA1 !important;" href="{{ path('ed_blog_events', {'categorySlug': children.term.slug}) }}">Calendrier</a></li>
+                </div>
+                <div class="col-xs-9" style="margin-top: 10px;">
+                    {{ render(controller('EDBlogBundle:Frontend/Blog:byCategorytag', {'categorySlug': children.term.slug})) }}
+                </div>
+                </div>
+            </ul>
+        </li>
+    {% endfor %}
+{% endif %}
+

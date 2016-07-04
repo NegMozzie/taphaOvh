@@ -1,0 +1,55 @@
+{% extends 'Msports\BlogBundle:Frontend/Blog:index.html.twig' %}
+
+
+{% block main %}
+	
+	<div class="col-xs-12">					
+		<h1 style="font-family:'Black Ops One'; font-size:3em; color:#0a4541 !important;">
+			Ecuries 
+			{% if (criteria is defined) %}
+				{% if (criteria.type == 'category') %}
+					{%  set categories = categoriesFromFirstLevel(criteria.value)  %}
+					{{ criteria.value.Term.title}}
+				{% elseif (criteria.type == 'tag') %}
+					{{ criteria.type }}: {{ criteria.value.Term.title}}
+				{% elseif (criteria.type == 'author') %}
+					{{ criteria.type }}: {{ criteria.value.blogDisplayName}}
+				{% elseif (criteria.type == 'archive') %}
+					{{ criteria.type }}: {{ criteria.value.year }} {{ getMonth(criteria.value.month)}}
+				{% endif  %}
+			{% endif %}
+		</h1>
+	</div>
+	<div class="col-xs-12">
+		{% media criteria.value.excerptPhoto, 'excerpt' with {'class': 'img-responsive img-blog'} %}
+	</div>
+	{% for item in pagination %}
+		{% if (loop.index0 % 3) == 0 %}
+        	<div class="col-xs-12" style="padding-top : 5px;">
+    	{% endif %}
+			<div class="item panel-warning col-xs-12 col-sm-6 col-md-4">
+				<div class="widget-user-header bg-aqua-active" style="padding: 0 0 0 0 !important;">
+		            <div class="c-article__full">{% media item.excerptPhoto, 'excerpt' with {'class': 'msports_item_index'} %}</div>
+		        </div>
+
+		        <div class="widget-user-header col-xs-12">
+
+		        	<h3 style=" text-align:center;color:#FFF !important;"> {{item|capitalize }}</h3>
+					{% for pilot in item.getPilots %}
+						<h6 style=" text-align:center;color:#0b4242 !important;">
+							<a class="black" href="{{ path('ed_frontend_blog_by_pilotname', { 'fullName': pilot.getFullName }) }}">
+								{{pilot|capitalize }}
+							</a>
+						</h6>
+					{% endfor %}
+		            
+		        </div>
+
+			</div>
+			
+		{% if loop.index % 3  == 0 or loop.revindex == 1 %}
+        	</div>
+    	{% endif %}
+	{% endfor %}
+{% endblock main %}
+

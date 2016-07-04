@@ -1,0 +1,8 @@
+services:
+    user.admin.admin:
+        class: Msports\UserBundle\Admin\AdminAdmin
+        arguments: [~, Msports\UserBundle\Entity\Admin, ~]
+        calls:
+            - [ setUserManager, [ '@fos_user.user_manager' ] ]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: 'Utilisateurs', label: 'Administrateurs'}

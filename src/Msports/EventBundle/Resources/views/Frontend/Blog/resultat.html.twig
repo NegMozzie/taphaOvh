@@ -1,0 +1,49 @@
+{% extends 'Msports\BlogBundle:Frontend/Blog:index.html.twig' %}
+
+
+{% block main %}
+    <div class="col-xs-12" style="padding-top : 5px;">
+		{% if pagination | length == 1 %}
+			<h1 style="color:#0a4541 !important;font-family:'Black Ops One'; font-size:2.3em; float:left; margin-top:40px; padding:50px auto;">Resultat
+				{{ pagination[0] }}
+			</h1>
+			<div class="col-xs-4 col-xs-push-8">
+				{% media pagination[0].excerptPhoto, 'excerpt' with { 'class':'img-responsive img-blog'} %}
+			</div>
+		{% elseif  pagination|length < 1 %}
+			<h1 style="color:#0a4541 !important;font-family:'Black Ops One'; font-size:2.7em; float:left; margin-top:40px; padding:50px auto;">Cette Catégorie n'a pa d'evenement</h1>
+		{% endif %}
+	</div>
+	{% if  pagination|length > 1 %}
+		{% for item in pagination %}
+			<a href="{{ path('ed_blog_classement', {'categorySlug': item.getCategory().term.slug, 'eventName': item.getName}) }}">
+				{% media item.excerptPhoto, 'excerpt' with { 'class':'img-responsive img-blog' } %}
+			</a>
+		{% endfor %}
+	{% elseif  pagination|length == 1 %}
+		{%set item=pagination[0]%}
+		{% for gp in item.getChildren %}
+		   	{% if (loop.index0 % 4) == 0 %}
+		        <div class="col-xs-12">
+			{% endif %}
+			<div class="item panel-warning col-xs-6 col-sm-6 col-md-3" style="margin-top: 15px;">
+				<a style="color:#FFF !important; background:#0b4242;" href="{{ path('ed_blog_resultat', {'categorySlug': item.getCategory.term.slug, 'eventName': gp.getName}) }}">
+
+					<!-- Add the bg color to the header using any of the bg-* classes -->
+			        <div class="widget-user-header bg-aqua-active" style="padding: 0 0 0 0 !important;">
+			            <div class="c-article__full">{% media gp.excerptPhoto, 'excerpt' with {'class': 'msports_item_index'} %}</div>
+			        </div>
+
+					<div class="widget-user-header col-xs-12">
+            			<h2 class="text--mini app-grey" style="font-family:'Black Ops One';font-size:1em;">
+					    	{{ gp.name }}
+						</h2>
+					</div>
+				</a>
+			</div>
+			{% if loop.index % 4  == 0 or loop.revindex == 1%}
+				</div>
+			{% endif %}
+		{% endfor %}
+	{% endif %}
+{% endblock main %}

@@ -1,0 +1,96 @@
+{% extends 'Msports\BlogBundle:Frontend/Blog:index.html.twig' %}
+
+
+{% block main %}
+  {% set author = null %}
+  <div class="box box-solid col-xs-12 col-md-9" style="padding: 0 0 0 0 !important;">
+    <div class="box-body">
+      <div class="item">
+        {% if event.article %}
+          {% media event.article.excerptPhoto, 'excerpt' with {'class':'img-responsive img-blog msports_article_photo'} %}
+          <h1 style="font-family:'Black Ops One'; font-size:2em; color:#000">{{ event.article.title|capitalize }}</h1>      
+          <p class="text--mini app-grey">Publié le 
+            <a href="{{ path('ed_frontend_blog_by_author', {'username': event.article.author.username}) }}">{{ event.article.author.blogDisplayName }}</a> le {{ event.article.publishedAt|blogDate}}
+                    {% if (event.article.categories|length) %} in 
+                      {%  for category in event.article.categories %}
+                        {{ loop.index0 ? ', ' }}<a href="{{ path('ed_frontend_blog_by_category', {'categorySlug': category.term.slug}) }}" >{{ category.term.title }}</a>
+                      {% endfor %}
+                    {% endif %}
+                    {% if ( is_granted('ACCESS_COMMENTS') and commentsCnt) %}
+                      | <a href="#comments">{{  commentsCnt }}</a> comment{{  (commentsCnt > 1) ? 's' }}
+                    {% endif  %}
+          </p>
+          <p>{{ event.article.content|raw }}</p>
+          <div class="col-xs-12" style="margin-top: 15px;">
+            <h1 style="font-family:'Black Ops One'; font-size:2em; color:#0a4541 !important;">
+              Classement {{ event.name }}
+            </h1>
+          </div>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Rang</th>
+                <th>Pilote</th>
+                <th>Q1</th>
+                <th>Q2</th>
+                <th>Q3</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for rank in event.getPilots()%}
+                <tr>
+                  <td>{{rank.rank}}</td>
+                  <td>
+                    {{ rank.getPilot}}
+                  </td>
+                  <td class="tc classAuto">
+                    {{ rank.getTime|date("h:i,s") }}
+                  </td>
+                  <td>
+                    {{ rank.getTime1|date("h:i,s") }}
+                  </td>
+                  <td>
+                    {{ rank.getTime2|date("h:i,s") }}
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>                  
+          {% set author = event.article.author %}
+        {% else %}
+          <div class="col-xs-12 ">
+            <h1 style="font-family:'Black Ops One'; font-size:2em; color:#0a4541 !important;">
+              Commentaires en direct
+            </h1>
+          </div>
+          <table class="table table-bordered">
+            <tbody>
+              {% for comment in event.getComments %}
+                <tr >
+                  <td><h3 style="color:#FFF !important;">tour {{ comment.tour }}</h3></td>
+                  <td><h3 style="color:#FFF !important;">{{ comment.comment }}</h3></td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3" style="padding: 0 0 0 0; margin-top: 5px;" >
+    <div class="col-xs-12">
+      <h1 style="font-family:'Black Ops One'; font-size:1.1em; color:#000"> ARTICLES DU MEME AUTEUR </h1>
+    </div>
+    <div class="col-xs-12 semi-transparent-round">  
+      {{ render(controller('EDBlogBundle:Frontend/Blog:byAuthorBar', {'user': author})) }}
+    </div>  
+  </div>
+{% endblock main %}
+
+
+
+
+
+
+  

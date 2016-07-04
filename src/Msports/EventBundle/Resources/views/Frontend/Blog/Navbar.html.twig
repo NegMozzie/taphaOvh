@@ -1,0 +1,15 @@
+{% set break = false%}
+
+	{% for item in pagination if not break %}
+	    <div class="col-sm-3" style="margin: 0 0 0 0 !important; height:auto !important; ">
+	        <a href="{{ path('ed_frontend_blog_single_article', { 'slug': item.slug })}}">
+
+	        	{% media item.excerptPhoto, 'excerpt' with {'class': 'centered img--auto d--b', 'style':'height:140px;width:100%;'} %}
+	     
+	            <h1 style=" text-align:center;color:White;"> {{item.title }}</h1>
+	        </a>
+	    </div>
+	    {% if loop.index == 4 %}
+	        {% set break = true %}
+	    {% endif %}
+	{% endfor %}

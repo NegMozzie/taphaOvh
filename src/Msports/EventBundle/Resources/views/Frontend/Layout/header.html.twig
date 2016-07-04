@@ -1,0 +1,59 @@
+
+
+  <section id="top">
+      <div class="trunk">
+        <div id="social-count" class="fr">
+          <ul>
+            {% if app.user and app.user.hasRole('ROLE_USER') %}
+              <li class="a" data-link='{{  url('sonata_admin_dashboard') }}'>
+                <a class="white" href="{{  url('sonata_admin_dashboard') }}">
+                Panel Admin</a>
+              </li>
+              <li class="a" data-link='{{ path('fos_user_security_logout') }}'>
+                <a class="white" href="{{ path('fos_user_security_logout') }}">
+                deconecter</a>
+              </li>
+            {% else %}
+              <li class="a" data-link='{{ path('fos_user_security_login') }}'>
+                <a class="white" href="{{ path('fos_user_security_login') }}">
+                Se connecter</a>
+              </li>
+            {% endif %}
+            <li class="a" data-link='{"url":"aHR0cHM6Ly93d3cuZmFjZWJvb2suY29tL1Nwb3J0cy5mci8/ZnJlZj10cw==", "target": "_blank"}'>Facebook</li>
+            <li class="a" data-link='{"url":"aHR0cHM6Ly90d2l0dGVyLmNvbS9zcG9ydHNfZnI=", "target": "_blank"}'>Twitter</li>>
+          </ul>           
+        </div>
+        
+      </div><!-- #top .trunk -->
+  </section><!-- #top -->
+  <nav  style="margin:auto;" class="navbar navbar-default">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="true">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <div class="col-sm-2">
+          <a class="navbar-brand " href="#">
+            <img src="/bundles/blog/img/logo.jpg" alt="">
+          </a>
+        
+        </div>
+      </div>
+      <div class="navbar-body">
+
+        
+        <div class=" col-sm-8 collapse navbar-collapse " style="" id="bs-example-navbar-collapse-1">
+          
+          <ul id = "exe_nav_main " style="float:left; margin-top:5px;" >
+          	 {%block navbar%}
+                {{ render(controller('BlogBundle:Frontend/Navbar:categoryList')) }}
+              {%endblock%}
+          </ul>
+        </div>
+      </div>
+  </nav>
+  
+

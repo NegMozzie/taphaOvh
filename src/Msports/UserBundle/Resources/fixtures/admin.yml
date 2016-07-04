@@ -1,0 +1,10 @@
+Msports\UserBundle\Entity\Admin:
+   admin_Msports:
+      username: Msports
+      email: admin@msports.fr
+      plainPassword: 'Msports'
+      firstname: 'Tapha'
+      lastname: 'NDOUR'
+      enabled: 1
+      roles: ['ROLE_SUPER_ADMIN']
+      blogDisplayName: 'Tapha'
