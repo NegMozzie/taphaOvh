@@ -265,7 +265,7 @@ class Comment
      /**
      * @param mixed $author
      */
-    public function setAuthor(User $author=null)
+    public function setAuthor(Admin $author=null)
     {
         $this->author = $author;
         return $this;
