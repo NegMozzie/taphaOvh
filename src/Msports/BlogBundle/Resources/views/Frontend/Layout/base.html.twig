@@ -26,11 +26,6 @@
     {# We merge several css files into 1, and that way we reduce number of calls during page rendering #}
     {# EdBlog css files #}
     {% block stylesheets %}
-      {% stylesheets filter='less' output='css/main.css'
-        'bundles/msportsblog/css/main.css.less'
-      %}
-        <link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="all" />
-      {% endstylesheets %}
 
       {% stylesheets filter="cssrewrite"
        
@@ -64,7 +59,7 @@
     <link href="{{ asset('bundles/blog/css/ddmenu.css') }}" rel="stylesheet">
     <link href="{{ asset('bundles/blog/css/ddmenu.css') }}" rel="stylesheet">
     <link href="{{ asset('bundles/blog/css/ddmenu.css') }}" rel="stylesheet">
-    
+
 
     {# Fonts #}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
